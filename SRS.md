@@ -3,10 +3,10 @@
 1.  Introduction
 
     1. Purpose of this document
+       The objective of this document is to present a detailed description about the web application "Bug Tracker". It will describe the purpose of the application, detail the development proccess and explain its features.
 
-    2. Scope of this document
-
-    3. Overview
+    2. Overview
+    
 
 2.  General description
 
@@ -20,6 +20,4 @@
 
 7.  Non-Functional Attributes
 
-8.  Preliminary Schedule and Budget
-
-9.  Appendices
+8.  Appendices
