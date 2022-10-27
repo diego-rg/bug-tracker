@@ -12,11 +12,12 @@ const CreateBug = () => {
     severity: "",
   });
 
-  const onSubmit = async (bugFormData) => {
+  const submitBug = async (bugFormData) => {
     try {
-      const postBug = await bugsAPI.post("/bugs", bugFormData);
-      if (postBug.status === 200) {
-        console.log(postBug.data.message);
+      const postBugResponse = await bugsAPI.post("/bugs", bugFormData);
+      if (postBugResponse.status === 200) {
+        console.log(postBugResponse.data.message);
+        // window.location.reload();//cambiar por useEffect
       }
     } catch (error) {
       if (
@@ -31,7 +32,7 @@ const CreateBug = () => {
   };
 
   return (
-    <BugForm initialValues={formValues} onSubmit={onSubmit}>
+    <BugForm initialValues={formValues} onSubmit={submitBug}>
       Submit Bug
     </BugForm>
   );

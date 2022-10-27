@@ -18,6 +18,17 @@ const BugList = () => {
     }
   };
 
+  const deleteBug = async (id) => {
+    try {
+      const deleteBugResponse = await bugsAPI.delete(`/bugs/${id}`);
+      if (deleteBugResponse.status === 200) {
+        console.log(deleteBugResponse.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const renderBugs = bugs.map((bug) => {
     return (
       <div
@@ -36,10 +47,23 @@ const BugList = () => {
           {bug.description}
         </p>
         <button
-          className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg
+          className="m-2 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg
          hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Read more
+          Details
+        </button>
+        <button
+          className="m-2 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg
+         hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Edit
+        </button>
+        <button
+          onClick={() => deleteBug(bug._id)}
+          className="m-2 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg
+         hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Delete
         </button>
       </div>
     );
