@@ -18,6 +18,9 @@ const BugForm = (props) => {
 
           <label htmlFor="status">Status:</label>
           <Field as="select" id="status" name="status">
+            <option value="" disabled defaultValue hidden>
+              Select...
+            </option>
             <option value="new">New</option>
             <option value="assigned">Assigned</option>
             <option value="fixed">Fixed</option>
@@ -26,6 +29,9 @@ const BugForm = (props) => {
 
           <label htmlFor="priority">Priority:</label>
           <Field as="select" id="priority" name="priority">
+            <option value="" disabled defaultValue hidden>
+              Select...
+            </option>
             <option value="low">Low</option>
             <option value="high">High</option>
           </Field>
@@ -33,6 +39,9 @@ const BugForm = (props) => {
 
           <label htmlFor="severity">Severity:</label>
           <Field as="select" id="severity" name="severity">
+            <option value="" disabled defaultValue hidden>
+              Select...
+            </option>
             <option value="low">Low</option>
             <option value="high">High</option>
           </Field>

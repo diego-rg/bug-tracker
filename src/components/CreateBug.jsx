@@ -4,7 +4,7 @@ import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
 
 const CreateBug = () => {
-  const [formValues, setformValues] = useState({
+  const [formValues] = useState({
     name: "",
     description: "",
     status: "",
