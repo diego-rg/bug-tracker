@@ -16,7 +16,7 @@ const CreateBug = () => {
     try {
       await bugsAPI.post("/bugs", bugFormData);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.message);
     }
   };
 
