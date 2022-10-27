@@ -8,46 +8,50 @@ const BugForm = (props) => {
     <div>
       <Formik {...props} validationSchema={validationSchema}>
         <Form>
-          <label htmlFor="name">Name:</label>
-          <Field name="name" id="name" type="text" />
-          <ErrorMessage name="name" component="span" />
+          <fieldset>
+            <legend>Create a new bug</legend>
 
-          <label htmlFor="description">Description:</label>
-          <Field name="description" id="description" type="text" />
-          <ErrorMessage name="description" component="span" />
+            <label htmlFor="name">Name:</label>
+            <Field name="name" id="name" type="text" />
+            <ErrorMessage name="name" component="span" />
 
-          <label htmlFor="status">Status:</label>
-          <Field as="select" id="status" name="status">
-            <option value="" disabled defaultValue hidden>
-              Select...
-            </option>
-            <option value="new">New</option>
-            <option value="assigned">Assigned</option>
-            <option value="fixed">Fixed</option>
-          </Field>
-          <ErrorMessage name="status" component="span" />
+            <label htmlFor="description">Description:</label>
+            <Field name="description" id="description" type="text" />
+            <ErrorMessage name="description" component="span" />
 
-          <label htmlFor="priority">Priority:</label>
-          <Field as="select" id="priority" name="priority">
-            <option value="" disabled defaultValue hidden>
-              Select...
-            </option>
-            <option value="low">Low</option>
-            <option value="high">High</option>
-          </Field>
-          <ErrorMessage name="priority" component="span" />
+            <label htmlFor="status">Status:</label>
+            <Field as="select" id="status" name="status">
+              <option value="" disabled defaultValue hidden>
+                Select...
+              </option>
+              <option value="new">New</option>
+              <option value="assigned">Assigned</option>
+              <option value="fixed">Fixed</option>
+            </Field>
+            <ErrorMessage name="status" component="span" />
 
-          <label htmlFor="severity">Severity:</label>
-          <Field as="select" id="severity" name="severity">
-            <option value="" disabled defaultValue hidden>
-              Select...
-            </option>
-            <option value="low">Low</option>
-            <option value="high">High</option>
-          </Field>
-          <ErrorMessage name="severity" component="span" />
+            <label htmlFor="priority">Priority:</label>
+            <Field as="select" id="priority" name="priority">
+              <option value="" disabled defaultValue hidden>
+                Select...
+              </option>
+              <option value="low">Low</option>
+              <option value="high">High</option>
+            </Field>
+            <ErrorMessage name="priority" component="span" />
 
-          <button type="submit">{props.children}</button>
+            <label htmlFor="severity">Severity:</label>
+            <Field as="select" id="severity" name="severity">
+              <option value="" disabled defaultValue hidden>
+                Select...
+              </option>
+              <option value="low">Low</option>
+              <option value="high">High</option>
+            </Field>
+            <ErrorMessage name="severity" component="span" />
+
+            <button type="submit">{props.children}</button>
+          </fieldset>
         </Form>
       </Formik>
     </div>

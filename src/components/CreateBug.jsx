@@ -14,9 +14,19 @@ const CreateBug = () => {
 
   const onSubmit = async (bugFormData) => {
     try {
-      await bugsAPI.post("/bugs", bugFormData);
+      const postBug = await bugsAPI.post("/bugs", bugFormData);
+      if (postBug.status === 200) {
+        console.log(postBug.data.message);
+      }
     } catch (error) {
-      console.log(error.response.data.message);
+      if (
+        error.response.data.message ===
+        "Bug validation failed: name: A bug with that name already exists"
+      ) {
+        console.log(error.response.data.message);
+      } else {
+        console.log(error);
+      }
     }
   };
 
