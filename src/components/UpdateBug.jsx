@@ -12,11 +12,12 @@
 //     severity: "",
 //   });
 
-//   const onSubmit = async (bugFormData) => {
+//   const updateBug = async (bugData, id) => {
 //     try {
-//       const postBug = await bugsAPI.post("/bugs", bugFormData);
-//       if (postBug.status === 200) {
-//         console.log(postBug.data.message);
+//       const updateBugResponse = await bugsAPI.put(`/bugs/${id}`, bugData);
+//       if (updateBugResponse.status === 200) {
+//         console.log(updateBugResponse.data.message);
+//         // window.location.reload();//cambiar por useEffect
 //       }
 //     } catch (error) {
 //       if (
@@ -31,9 +32,10 @@
 //   };
 
 //   return (
-//     <BugForm initialValues={formValues} onSubmit={onSubmit}>
-//       Submit Bug
-//     </BugForm>
+//     <BugForm
+//       initialValues={formValues}
+//       onSubmit={() => updateBug()}
+//     />
 //   );
 // };
 

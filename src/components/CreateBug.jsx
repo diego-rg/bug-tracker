@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
 
-const CreateBug = () => {
+const CreateBug = (props) => {
   const [formValues] = useState({
     name: "",
     description: "",
@@ -31,7 +31,14 @@ const CreateBug = () => {
     }
   };
 
-  return <BugForm initialValues={formValues} onSubmit={submitBug} />;
+  return (
+    <BugForm
+      initialValues={formValues}
+      show={props.show}
+      setShow={props.setShow}
+      onSubmit={submitBug}
+    />
+  );
 };
 
 export default CreateBug;
