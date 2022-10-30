@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import bugsAPI from "../apis/bugs";
-import deleteBug from "./deleteBug";
 import getBugs from "../scripts/getBugs";
 import CreateBug from "./CreateBug";
 import UpdateBug from "./UpdateBug";
+import DeleteBug from "./DeleteBug";
 
 const BugList = () => {
   const [bugs, setBugs] = useState([]);
@@ -12,7 +12,7 @@ const BugList = () => {
   // const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
-  // const [showDeleteBug, setShowDeleteBug] = useState(false);
+  const [showDeleteBug, setShowDeleteBug] = useState(false);
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -44,6 +44,12 @@ const BugList = () => {
     setSelectedBugId(bugId);
   };
 
+  //Show delete modal
+  const openDeleteBug = (bugId) => {
+    setShowDeleteBug(true);
+    setSelectedBugId(bugId);
+  };
+
   const renderBugs = bugs.map((bug) => {
     return (
       <div
@@ -70,7 +76,7 @@ const BugList = () => {
         <button onClick={() => openUpdateBug(bug._id)} className="btn-primary ">
           Edit
         </button>
-        <button onClick={() => deleteBug(bug._id)} className="btn-danger">
+        <button onClick={() => openDeleteBug(bug._id)} className="btn-danger">
           Delete
         </button>
       </div>
@@ -83,6 +89,15 @@ const BugList = () => {
         Create Bug
       </button>
       <div className="flex flex-wrap">{renderBugs}</div>
+
+      {showDeleteBug && (
+        <DeleteBug
+          setBugs={setBugs}
+          bugId={selectedBugId}
+          show={showDeleteBug}
+          setShow={setShowDeleteBug}
+        />
+      )}
 
       {showCreateBug && (
         <CreateBug
