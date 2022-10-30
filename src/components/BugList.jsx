@@ -50,15 +50,15 @@ const BugList = () => {
         key={bug._id}
         className="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
       >
-        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 font-semibold tracking-tight text-gray-900 dark:text-white">
           {bug.name}
         </h5>
-        <div className="flex text-white dark:text-white">
-          <p className="mb-3 p-1 font-normal">Status: {bug.status}</p>
-          <p className="mb-3 p-1 font-normal">Priority: {bug.priority}</p>
-          <p className="mb-3 p-1 font-normal">Severity: {bug.severity}</p>
-        </div>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <ul className="flex flex-col text-sm text-gray-500 dark:text-gray-300">
+          <li>Status: {bug.status}</li>
+          <li>Priority: {bug.priority}</li>
+          <li>Severity: {bug.severity}</li>
+        </ul>
+        <p className="mb-3 text-gray-700 dark:text-gray-400">
           {bug.description}
         </p>
         {/* <button
