@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import bugsAPI from "../apis/bugs";
 import getBugs from "../scripts/getBugs";
 import ModalButton from "./ModalButton";
