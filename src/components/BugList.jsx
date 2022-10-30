@@ -85,11 +85,16 @@ const BugList = () => {
       <div className="flex flex-wrap">{renderBugs}</div>
 
       {showCreateBug && (
-        <CreateBug show={showCreateBug} setShow={setShowCreateBug} />
+        <CreateBug
+          setBugs={setBugs}
+          show={showCreateBug}
+          setShow={setShowCreateBug}
+        />
       )}
 
       {showUpdateBug && (
         <UpdateBug
+          setBugs={setBugs}
           show={showUpdateBug}
           setShow={setShowUpdateBug}
           bugId={selectedBugId}

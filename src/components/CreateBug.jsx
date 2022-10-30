@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
+import getBugs from "./getBugs";
 
 const CreateBug = (props) => {
   const [formValues] = useState({
@@ -17,7 +18,8 @@ const CreateBug = (props) => {
       const postBugResponse = await bugsAPI.post("/bugs", bugData);
       if (postBugResponse.status === 200) {
         console.log(postBugResponse.data.message);
-        // window.location.reload();//cambiar por useEffect
+        props.setShow(false);
+        getBugs(props.setBugs);
       }
     } catch (error) {
       if (

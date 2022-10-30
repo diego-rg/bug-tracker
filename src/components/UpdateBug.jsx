@@ -2,6 +2,7 @@ import React from "react";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
+import getBugs from "./getBugs";
 
 const UpdateBug = (props) => {
   const updateBug = async (bugData) => {
@@ -12,7 +13,8 @@ const UpdateBug = (props) => {
       );
       if (updateBugResponse.status === 200) {
         console.log(updateBugResponse.data.message);
-        // window.location.reload();//cambiar por useEffect
+        props.setShow(false);
+        getBugs(props.setBugs);
       }
     } catch (error) {
       if (
