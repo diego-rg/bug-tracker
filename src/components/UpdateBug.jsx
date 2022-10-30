@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
-import getBugs from "./getBugs";
+import getBugs from "../scripts/getBugs";
 
 const UpdateBug = (props) => {
   const [errorMessage, setErrorMessage] = useState();

@@ -36,7 +36,12 @@ const BugForm = (props) => {
             >
               Description:
             </label>
-            <Field name="description" id="description" type="text" />
+            <Field
+              as="textarea"
+              name="description"
+              id="description"
+              type="text"
+            />
             <ErrorMessage
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               name="description"

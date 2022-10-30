@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import bugsAPI from "../apis/bugs";
 import deleteBug from "./deleteBug";
-import getBugs from "./getBugs";
+import getBugs from "../scripts/getBugs";
 import CreateBug from "./CreateBug";
 import UpdateBug from "./UpdateBug";
 
@@ -21,12 +21,12 @@ const BugList = () => {
     severity: "",
   });
 
-  //get all Bugs
+  //Get all bugs
   useEffect(() => {
     getBugs(setBugs);
   }, []);
 
-  //get selected bug data
+  //Set selected bug data
   const getBugById = async (bugId) => {
     try {
       const { data } = await bugsAPI.get(`/bugs/${bugId}`);
@@ -37,7 +37,7 @@ const BugList = () => {
     }
   };
 
-  //update
+  //Show update modal
   const openUpdateBug = (bugId) => {
     getBugById(bugId);
     setShowUpdateBug(true);
