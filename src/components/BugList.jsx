@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import bugsAPI from "../apis/bugs";
 import deleteBug from "./deleteBug";
+import getBugs from "./getBugs";
 import CreateBug from "./CreateBug";
 import UpdateBug from "./UpdateBug";
 
@@ -22,17 +23,8 @@ const BugList = () => {
 
   //get all Bugs
   useEffect(() => {
-    getBugs();
+    getBugs(setBugs);
   }, []);
-
-  const getBugs = async () => {
-    try {
-      const { data } = await bugsAPI.get("/bugs");
-      setBugs(data.bugs);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   //get selected bug data
   const getBugById = async (bugId) => {

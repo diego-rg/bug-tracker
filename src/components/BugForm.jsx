@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import validationSchema from "../formValidation/bug";
+import ModalButton from "./ModalButton";
 
 const BugForm = (props) => {
   return (
@@ -12,29 +13,11 @@ const BugForm = (props) => {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               Bug Form
             </h3>
-            <button
-              onClick={() => props.setShow(false)}
-              type="button"
-              className="btn-close"
-            >
-              <svg
-                aria-hidden="true"
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              <span className="sr-only">Close modal</span>
-            </button>
+
+            <ModalButton setShow={props.setShow} />
           </div>
           <Formik {...props} validationSchema={validationSchema}>
-            <Form className="dark:bg-gray-800 dark:border-gray-700">
+            <Form className="dark:bg-gray-800 dark:border-gray-700 p-4">
               <label
                 htmlFor="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -119,7 +102,7 @@ const BugForm = (props) => {
                 component="span"
               />
 
-              <div className="flex">
+              <div className="flex ">
                 <button type="submit" className="btn-primary">
                   Save bug
                 </button>
