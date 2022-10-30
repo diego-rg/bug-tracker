@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import bugsAPI from "../apis/bugs";
 import deleteBug from "./deleteBug";
-import BugForm from "./BugForm";
 import CreateBug from "./CreateBug";
+import UpdateBug from "./UpdateBug";
 
 const BugList = () => {
   const [bugs, setBugs] = useState([]);
   const [selectedBugId, setSelectedBugId] = useState();
   // const [showBugDetails, setShowBugDetails] = useState(false);
-  const [showEditBug, setShowEditBug] = useState(false);
+  const [showUpdateBug, setShowUpdateBug] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
   // const [showDeleteBug, setShowDeleteBug] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -34,37 +34,7 @@ const BugList = () => {
     }
   };
 
-  //update bug
-  const updateBug = async (selectedBugId, bugData) => {
-    try {
-      const updateBugResponse = await bugsAPI.put(
-        `/bugs/${selectedBugId}`,
-        bugData
-      );
-      if (updateBugResponse.status === 200) {
-        console.log(updateBugResponse.data.message);
-        // window.location.reload();//cambiar por useEffect
-      }
-    } catch (error) {
-      if (
-        error.response.data.message ===
-        "Bug validation failed: name: A bug with that name already exists"
-      ) {
-        console.log(error.response.data.message);
-      } else {
-        console.log(error);
-      }
-    }
-  };
-
-  const openUpdateBugModal = (bugId) => {
-    getBugById(bugId);
-    setShowEditBug(true);
-    setSelectedBugId(bugId);
-    console.log(formValues);
-    console.log(showEditBug);
-  };
-
+  //get selected bug data
   const getBugById = async (bugId) => {
     try {
       const { data } = await bugsAPI.get(`/bugs/${bugId}`);
@@ -73,6 +43,15 @@ const BugList = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  //update
+  const openUpdateBug = (bugId) => {
+    getBugById(bugId);
+    setShowUpdateBug(true);
+    setSelectedBugId(bugId);
+    console.log(formValues);
+    console.log(showUpdateBug);
   };
 
   const renderBugs = bugs.map((bug) => {
@@ -100,7 +79,7 @@ const BugList = () => {
           Details
         </button> */}
         <button
-          onClick={() => openUpdateBugModal(bug._id)}
+          onClick={() => openUpdateBug(bug._id)}
           className="m-2 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg
          hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
@@ -108,8 +87,8 @@ const BugList = () => {
         </button>
         <button
           onClick={() => deleteBug(bug._id)}
-          className="m-2 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg
-         hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="m-2 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-700 rounded-lg
+         hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
         >
           Delete
         </button>
@@ -127,17 +106,18 @@ const BugList = () => {
         Create Bug
       </button>
       <div className="flex flex-wrap">{renderBugs}</div>
-      {showEditBug && (
-        <BugForm
-          show={showEditBug}
-          setShow={setShowEditBug}
-          initialValues={formValues}
-          onSubmit={() => updateBug(selectedBugId)}
-          enableReinitialize
-        />
-      )}
+
       {showCreateBug && (
         <CreateBug show={showCreateBug} setShow={setShowCreateBug} />
+      )}
+
+      {showUpdateBug && (
+        <UpdateBug
+          show={showUpdateBug}
+          setShow={setShowUpdateBug}
+          bugId={selectedBugId}
+          formValues={formValues}
+        />
       )}
     </div>
   );

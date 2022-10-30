@@ -18,6 +18,7 @@ const CreateBug = (props) => {
       if (postBugResponse.status === 200) {
         console.log(postBugResponse.data.message);
         // window.location.reload();//cambiar por useEffect
+        console.log(bugData);
       }
     } catch (error) {
       if (
