@@ -5,6 +5,7 @@ import BugForm from "./BugForm";
 import getBugs from "./getBugs";
 
 const CreateBug = (props) => {
+  const [errorMessage, setErrorMessage] = useState();
   const [formValues] = useState({
     name: "",
     description: "",
@@ -26,15 +27,16 @@ const CreateBug = (props) => {
         error.response.data.message ===
         "Bug validation failed: name: A bug with that name already exists"
       ) {
-        console.log(error.response.data.message);
+        setErrorMessage("Error: a bug with that name already exists.");
       } else {
-        console.log(error);
+        setErrorMessage("Error: bug creation failed.");
       }
     }
   };
 
   return (
     <BugForm
+      errorMessage={errorMessage}
       initialValues={formValues}
       show={props.show}
       setShow={props.setShow}

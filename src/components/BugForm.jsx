@@ -102,6 +102,12 @@ const BugForm = (props) => {
                 component="span"
               />
 
+              {props.errorMessage && (
+                <p className="text-white dark:text-white">
+                  {props.errorMessage}
+                </p>
+              )}
+
               <div className="flex ">
                 <button type="submit" className="btn-primary">
                   Save bug

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
 import getBugs from "./getBugs";
 
 const UpdateBug = (props) => {
+  const [errorMessage, setErrorMessage] = useState();
+
   const updateBug = async (bugData) => {
     try {
       const updateBugResponse = await bugsAPI.put(
@@ -21,15 +23,16 @@ const UpdateBug = (props) => {
         error.response.data.message ===
         "Bug validation failed: name: A bug with that name already exists"
       ) {
-        console.log(error.response.data.message);
+        setErrorMessage("Error: a bug with that name already exists.");
       } else {
-        console.log(error);
+        setErrorMessage("Error: bug data update failed.");
       }
     }
   };
 
   return (
     <BugForm
+      errorMessage={errorMessage}
       initialValues={props.formValues}
       show={props.show}
       setShow={props.setShow}
