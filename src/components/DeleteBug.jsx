@@ -33,9 +33,7 @@ const DeleteBug = (props) => {
           This bug will be deleted and its data lost. Do you wish to proceed?
         </p>
 
-        {props.errorMessage && (
-          <p className="text-white dark:text-white">{errorMessage}</p>
-        )}
+        {props.errorMessage && <p className="error-message">{errorMessage}</p>}
         <div className="flex ">
           <button
             onClick={() => props.setShow(false)}

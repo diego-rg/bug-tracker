@@ -25,7 +25,7 @@ const BugForm = (props) => {
             </label>
             <Field name="name" id="name" type="text" />
             <ErrorMessage
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="error-message"
               name="name"
               component="span"
             />
@@ -43,7 +43,7 @@ const BugForm = (props) => {
               type="text"
             />
             <ErrorMessage
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="error-message"
               name="description"
               component="span"
             />
@@ -63,7 +63,7 @@ const BugForm = (props) => {
               <option value="fixed">Fixed</option>
             </Field>
             <ErrorMessage
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="error-message"
               name="status"
               component="span"
             />
@@ -82,7 +82,7 @@ const BugForm = (props) => {
               <option value="high">High</option>
             </Field>
             <ErrorMessage
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="error-message"
               name="priority"
               component="span"
             />
@@ -101,13 +101,13 @@ const BugForm = (props) => {
               <option value="high">High</option>
             </Field>
             <ErrorMessage
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="error-message"
               name="severity"
               component="span"
             />
 
             {props.errorMessage && (
-              <p className="text-white dark:text-white">{props.errorMessage}</p>
+              <p className="error-message">{props.errorMessage}</p>
             )}
 
             <div className="flex ">
