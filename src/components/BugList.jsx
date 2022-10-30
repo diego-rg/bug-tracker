@@ -50,8 +50,6 @@ const BugList = () => {
     getBugById(bugId);
     setShowUpdateBug(true);
     setSelectedBugId(bugId);
-    console.log(formValues);
-    console.log(showUpdateBug);
   };
 
   const renderBugs = bugs.map((bug) => {
