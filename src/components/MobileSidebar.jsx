@@ -6,9 +6,9 @@ import {
 } from "react-icons/ri";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 
-const DesktopSidebar = () => {
+const MobileSidebar = () => {
   return (
-    <nav className="z-20 hidden w-44 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
+    <nav className="fixed inset-y-0 z-20 flex-shrink-0 w-44 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
       <div className="py-4 text-gray-500 dark:text-gray-400">
         <a
           className="flex justify-center text-lg font-bold text-gray-800 dark:text-gray-200"
@@ -77,4 +77,4 @@ const DesktopSidebar = () => {
   );
 };
 
-export default DesktopSidebar;
+export default MobileSidebar;
