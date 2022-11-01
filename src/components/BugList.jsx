@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import bugsAPI from "../apis/bugs";
-import getBugs from "../scripts/getBugs";
 import BugDetails from "./BugDetails";
-import CreateBug from "./CreateBug";
 import UpdateBug from "./UpdateBug";
 import DeleteBug from "./DeleteBug";
 
-const BugList = () => {
-  const [bugs, setBugs] = useState([]);
+const BugList = (props) => {
   const [selectedBug, setSelectedBug] = useState();
   const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
-  const [showCreateBug, setShowCreateBug] = useState(false);
   const [showDeleteBug, setShowDeleteBug] = useState(false);
   const [formValues, setFormValues] = useState({
     name: "",
@@ -21,11 +17,6 @@ const BugList = () => {
     priority: "",
     severity: "",
   });
-
-  //Get all bugs
-  useEffect(() => {
-    getBugs(setBugs);
-  }, []);
 
   //Set selected bug data to fill the form
   const getBugById = async (bugId) => {
@@ -57,7 +48,7 @@ const BugList = () => {
     setSelectedBug(bug);
   };
 
-  const renderBugs = bugs.map((bug) => {
+  const renderBugs = props.bugs.map((bug) => {
     return (
       <div
         key={bug._id}
@@ -87,10 +78,7 @@ const BugList = () => {
 
   return (
     <div className="p-2">
-      <button onClick={() => setShowCreateBug(true)} className="btn-primary ">
-        Create Bug
-      </button>
-      <div className="flex flex-wrap">{renderBugs}</div>
+      <div className="flex flex-wrap justify-evenly">{renderBugs}</div>
 
       {showBugDetails && (
         <BugDetails
@@ -102,24 +90,16 @@ const BugList = () => {
 
       {showDeleteBug && (
         <DeleteBug
-          setBugs={setBugs}
+          setBugs={props.setBugs}
           bugId={selectedBug._id}
           show={showDeleteBug}
           setShow={setShowDeleteBug}
         />
       )}
 
-      {showCreateBug && (
-        <CreateBug
-          setBugs={setBugs}
-          show={showCreateBug}
-          setShow={setShowCreateBug}
-        />
-      )}
-
       {showUpdateBug && (
         <UpdateBug
-          setBugs={setBugs}
+          setBugs={props.setBugs}
           bugId={selectedBug._id}
           show={showUpdateBug}
           setShow={setShowUpdateBug}

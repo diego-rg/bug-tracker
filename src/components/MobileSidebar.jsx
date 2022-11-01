@@ -31,13 +31,14 @@ const MobileSidebar = (props) => {
               </a>
             </li>
             <li className="relative px-6 py-4">
-              <a
+              <button
+                onClick={() => props.setShowCreateBug(true)}
                 className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                 href="../index.html"
               >
                 <RiAddCircleLine size={40} />
                 <span>Create Bug</span>
-              </a>
+              </button>
             </li>
 
             <li className="relative px-6 py-4">

@@ -7,7 +7,7 @@ import {
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { VscDebug } from "react-icons/vsc";
 
-const DesktopSidebar = () => {
+const DesktopSidebar = (props) => {
   return (
     <nav className="z-20 hidden w-44 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
       <div className="py-4 text-gray-500 dark:text-gray-400">
@@ -30,13 +30,14 @@ const DesktopSidebar = () => {
             </button>
           </li>
           <li className="relative px-6 py-4">
-            <a
+            <button
+              onClick={() => props.setShowCreateBug(true)}
               className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               href="../index.html"
             >
               <RiAddCircleLine size={40} />
               <span>Create Bug</span>
-            </a>
+            </button>
           </li>
 
           <li className="relative px-6 py-4">
