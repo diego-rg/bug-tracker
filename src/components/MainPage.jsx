@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 
 import DesktopSidebar from "./DesktopSidebar";
-import MobileNabvar from "./MobileNavbar";
+import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
+import BugList from "./BugList";
 
 const MainPage = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex min-h-screen md:h-screen bg-gray-50 dark:bg-gray-900">
       <DesktopSidebar />
       <MobileSidebar openMenu={openMenu} />
-      <MobileNabvar
-        openMenu={openMenu}
-        setOpenMenu={setOpenMenu}
-        dark={props.dark}
-        setDark={props.setDark}
-      />
+      <div className="flex flex-col flex-1">
+        <Nabvar
+          openMenu={openMenu}
+          setOpenMenu={setOpenMenu}
+          dark={props.dark}
+          setDark={props.setDark}
+        />
+        <BugList />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import BugList from "./components/BugList";
 import MainPage from "./components/MainPage";
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
   return (
     <div>
       <MainPage dark={dark} setDark={setDark} />
-      <BugList />
     </div>
   );
 }

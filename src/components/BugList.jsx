@@ -86,7 +86,7 @@ const BugList = () => {
   });
 
   return (
-    <div>
+    <div className="p-2">
       <button onClick={() => setShowCreateBug(true)} className="btn-primary ">
         Create Bug
       </button>
