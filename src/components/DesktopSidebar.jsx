@@ -13,7 +13,7 @@ const DesktopSidebar = () => {
       <div className="py-4 text-gray-500 dark:text-gray-400">
         <a
           className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
-          href="localhost:3000"
+          href="../index.html"
         >
           <VscDebug size={20} />
           <span className="mr-3 ml-1">Bug Tracker</span>
@@ -21,13 +21,13 @@ const DesktopSidebar = () => {
 
         <ul className="mt-6">
           <li className="relative px-6 py-4">
-            <a
+            <button
               className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               href="../index.html"
             >
               <MdOutlineCreateNewFolder size={40} />
               <span>Create Project</span>
-            </a>
+            </button>
           </li>
           <li className="relative px-6 py-4">
             <a
@@ -42,7 +42,7 @@ const DesktopSidebar = () => {
           <li className="relative px-6 py-4">
             <a
               className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="../index.html"
+              href="https://github.com/diego-rg/bug-tracker"
             >
               <RiBookOpenLine size={40} />
               <span>Documentation</span>
@@ -52,7 +52,7 @@ const DesktopSidebar = () => {
           <li className="relative px-6 py-4">
             <a
               className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="../index.html"
+              href="https://diego-rg.vercel.app/"
             >
               <RiQuestionLine size={40} />
               <span>About</span>

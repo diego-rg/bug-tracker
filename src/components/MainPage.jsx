@@ -12,6 +12,7 @@ const MainPage = (props) => {
     <div className="flex min-h-screen md:h-screen bg-gray-50 dark:bg-gray-900">
       <DesktopSidebar />
       <MobileSidebar openMenu={openMenu} />
+
       <div className="flex flex-col flex-1">
         <Nabvar
           openMenu={openMenu}
