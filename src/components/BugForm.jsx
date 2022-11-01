@@ -1,8 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+import { AiOutlineClose } from "react-icons/ai";
+
 import validationSchema from "../formValidation/bug";
-import ModalButton from "./ModalButton";
 
 const BugForm = (props) => {
   return (
@@ -12,7 +13,14 @@ const BugForm = (props) => {
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             Fill the bug data
           </h3>
-          <ModalButton setShow={props.setShow} />
+          <button
+            onClick={() => props.setShow(false)}
+            type="button"
+            className="btn-close"
+          >
+            <AiOutlineClose size={24} />
+            <span className="sr-only">Close modal</span>
+          </button>
         </div>
 
         <Formik {...props} validationSchema={validationSchema}>

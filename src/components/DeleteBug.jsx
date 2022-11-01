@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
+import { AiOutlineClose } from "react-icons/ai";
+
 import bugsAPI from "../apis/bugs";
 import getBugs from "../scripts/getBugs";
-import ModalButton from "./ModalButton";
 
 const DeleteBug = (props) => {
   const [errorMessage, setErrorMessage] = useState();
@@ -26,7 +27,14 @@ const DeleteBug = (props) => {
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             Warning
           </h3>
-          <ModalButton setShow={props.setShow} />
+          <button
+            onClick={() => props.setShow(false)}
+            type="button"
+            className="btn-close"
+          >
+            <AiOutlineClose size={24} />
+            <span className="sr-only">Close modal</span>
+          </button>
         </div>
 
         <p className="pt-4 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">

@@ -1,4 +1,4 @@
-import ModalButton from "./ModalButton";
+import { AiOutlineClose } from "react-icons/ai";
 
 const BugDetails = (props) => {
   return (
@@ -8,7 +8,14 @@ const BugDetails = (props) => {
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             {props.bugData.name}
           </h3>
-          <ModalButton setShow={props.setShow} />
+          <button
+            onClick={() => props.setShow(false)}
+            type="button"
+            className="btn-close"
+          >
+            <AiOutlineClose size={24} />
+            <span className="sr-only">Close modal</span>
+          </button>
         </div>
 
         <ul className="flex flex-col text-sm text-gray-500 dark:text-gray-300">
@@ -25,14 +32,6 @@ const BugDetails = (props) => {
           <li>Created: {props.bugData.createdAt}</li>
           <li>Last update: {props.bugData.updatedAt}</li>
         </ul>
-
-        <button
-          onClick={() => props.setShow(false)}
-          type="button"
-          className="btn-primary"
-        >
-          Close
-        </button>
       </div>
     </div>
   );
