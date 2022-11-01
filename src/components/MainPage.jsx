@@ -37,7 +37,7 @@ const MainPage = (props) => {
         openMenu={openMenu}
       />
 
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col">
         <Nabvar
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}

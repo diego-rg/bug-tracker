@@ -23,7 +23,7 @@ const MobileSidebar = (props) => {
           <ul className="mt-6">
             <li className="relative px-6 py-4">
               <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
                 href="../index.html"
               >
                 <MdOutlineCreateNewFolder size={40} />
@@ -33,7 +33,7 @@ const MobileSidebar = (props) => {
             <li className="relative px-6 py-4">
               <button
                 onClick={() => props.setShowCreateBug(true)}
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
                 href="../index.html"
               >
                 <RiAddCircleLine size={40} />
@@ -43,7 +43,7 @@ const MobileSidebar = (props) => {
 
             <li className="relative px-6 py-4">
               <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
                 href="https://github.com/diego-rg/bug-tracker"
               >
                 <RiBookOpenLine size={40} />
@@ -53,7 +53,7 @@ const MobileSidebar = (props) => {
 
             <li className="relative px-6 py-4">
               <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
                 href="https://diego-rg.vercel.app/"
               >
                 <RiQuestionLine size={40} />
@@ -63,7 +63,7 @@ const MobileSidebar = (props) => {
 
             <li className="relative px-6 py-4">
               <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
                 href="../index.html"
               >
                 <RiLogoutBoxLine size={40} />

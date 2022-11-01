@@ -13,7 +13,7 @@ const Nabvar = (props) => {
   return (
     <nav className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between h-full px-4 mx-auto text-black dark:text-white">
-        <button onClick={handleNav} className="md:hidden">
+        <button onClick={handleNav} className="md:hidden btn-menu">
           <RiMenuLine size={30} />
         </button>
         <div className="flex justify-center ml-4 flex-1">
@@ -35,7 +35,7 @@ const Nabvar = (props) => {
         <div className="flex items-center flex-shrink-0 ml-4">
           <button
             onClick={handleTheme}
-            className="rounded-md focus:outline-none focus:shadow-outline-gray text-black dark:text-white"
+            className="rounded-md focus:outline-none focus:shadow-outline-gray btn-menu"
             aria-label="Toggle color mode"
           >
             {props.dark ? <CgSun size={30} /> : <CgMoon size={30} />}

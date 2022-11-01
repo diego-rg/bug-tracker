@@ -11,7 +11,7 @@ const BugDetails = (props) => {
           <button
             onClick={() => props.setShow(false)}
             type="button"
-            className="btn-close"
+            className="btn-menu"
           >
             <AiOutlineClose size={24} />
             <span className="sr-only">Close modal</span>
