@@ -5,6 +5,7 @@ import {
   RiLogoutBoxLine,
 } from "react-icons/ri";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { VscDebug } from "react-icons/vsc";
 
 const MobileSidebar = (props) => {
   if (props.openMenu && window.innerWidth < 768) {
@@ -12,15 +13,11 @@ const MobileSidebar = (props) => {
       <nav className="fixed inset-y-0 z-20 flex-shrink-0 w-44 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
         <div className="py-4 text-gray-500 dark:text-gray-400">
           <a
-            className="flex justify-center text-lg font-bold text-gray-800 dark:text-gray-200"
+            className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
             href="localhost:3000"
           >
-            <img
-              className="w-8 inline"
-              src="/favicon-white.ico"
-              alt="Bug logo."
-            />
-            <span className="mr-3">Bug Tracker</span>
+            <VscDebug size={20} />
+            <span className="mr-3 ml-1">Bug Tracker</span>
           </a>
 
           <ul className="mt-6">

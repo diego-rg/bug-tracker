@@ -1,15 +1,19 @@
 import { RiMenuLine, RiSearchLine } from "react-icons/ri";
-import { MdDarkMode } from "react-icons/md";
+import { CgMoon, CgSun } from "react-icons/cg";
 
 const MobileNabvar = (props) => {
   const handleNav = () => {
     props.setOpenMenu(!props.openMenu);
   };
 
+  const handleTheme = () => {
+    props.setDark(!props.dark);
+  };
+
   return (
     <div className="flex flex-col flex-1">
       <nav className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
-        <div className="container flex items-center justify-between h-full px-4 mx-auto text-white">
+        <div className="container flex items-center justify-between h-full px-4 mx-auto text-black dark:text-white">
           <button onClick={handleNav} className="md:hidden">
             <RiMenuLine size={30} />
           </button>
@@ -31,10 +35,11 @@ const MobileNabvar = (props) => {
 
           <div className="flex items-center flex-shrink-0 ml-4">
             <button
-              className="rounded-md focus:outline-none focus:shadow-outline-gray"
+              onClick={handleTheme}
+              className="rounded-md focus:outline-none focus:shadow-outline-gray text-black dark:text-white"
               aria-label="Toggle color mode"
             >
-              <MdDarkMode size={30} />
+              {props.dark ? <CgSun size={30} /> : <CgMoon size={30} />}
             </button>
           </div>
         </div>

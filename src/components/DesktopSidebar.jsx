@@ -5,21 +5,18 @@ import {
   RiLogoutBoxLine,
 } from "react-icons/ri";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { VscDebug } from "react-icons/vsc";
 
 const DesktopSidebar = () => {
   return (
     <nav className="z-20 hidden w-44 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
       <div className="py-4 text-gray-500 dark:text-gray-400">
         <a
-          className="flex justify-center text-lg font-bold text-gray-800 dark:text-gray-200"
+          className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
           href="localhost:3000"
         >
-          <img
-            className="w-8 inline"
-            src="/favicon-white.ico"
-            alt="Bug logo."
-          />
-          <span className="mr-3">Bug Tracker</span>
+          <VscDebug size={20} />
+          <span className="mr-3 ml-1">Bug Tracker</span>
         </a>
 
         <ul className="mt-6">
