@@ -38,7 +38,7 @@ const MainPage = (props) => {
         openMenu={openMenu}
       />
 
-      <div>
+      <div className="w-full">
         <Nabvar
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}

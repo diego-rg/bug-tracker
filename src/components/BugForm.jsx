@@ -10,9 +10,7 @@ const BugForm = (props) => {
     <div className="modal-container">
       <div className="modal-content">
         <div className="modal-header">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Fill the bug data
-          </h3>
+          <h3 className="modal-title">Fill the bug data</h3>
           <button
             onClick={() => props.setShow(false)}
             type="button"
@@ -24,95 +22,107 @@ const BugForm = (props) => {
         </div>
 
         <Formik {...props} validationSchema={validationSchema}>
-          <Form className="dark:bg-gray-800 dark:border-gray-700 p-4">
-            <label
-              htmlFor="name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Name:
-            </label>
-            <Field name="name" id="name" type="text" />
-            <ErrorMessage
-              className="error-message"
-              name="name"
-              component="span"
-            />
+          <Form className="p-4">
+            <div className="pb-4">
+              <label htmlFor="name" className="form-label">
+                Name:
+              </label>
+              <Field name="name" id="name" type="text" className="form-input" />
+              <ErrorMessage
+                className="error-message"
+                name="name"
+                component="span"
+              />
+            </div>
 
-            <label
-              htmlFor="description"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Description:
-            </label>
-            <Field
-              as="textarea"
-              name="description"
-              id="description"
-              type="text"
-            />
-            <ErrorMessage
-              className="error-message"
-              name="description"
-              component="span"
-            />
+            <div className="pb-4">
+              <label htmlFor="description" className="form-label">
+                Description:
+              </label>
+              <Field
+                as="textarea"
+                rows="4"
+                name="description"
+                id="description"
+                type="text"
+                className="form-input"
+              />
+              <ErrorMessage
+                className="error-message"
+                name="description"
+                component="span"
+              />
+            </div>
 
-            <label
-              htmlFor="status"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Status:
-            </label>
-            <Field as="select" id="status" name="status">
-              <option value="" disabled defaultValue hidden>
-                Select...
-              </option>
-              <option value="new">New</option>
-              <option value="assigned">Assigned</option>
-              <option value="fixed">Fixed</option>
-            </Field>
-            <ErrorMessage
-              className="error-message"
-              name="status"
-              component="span"
-            />
+            <div className="pb-4">
+              <label htmlFor="status" className="form-label">
+                Status:
+              </label>
+              <Field
+                as="select"
+                id="status"
+                name="status"
+                className="form-input"
+              >
+                <option value="" disabled defaultValue hidden>
+                  Select...
+                </option>
+                <option value="new">New</option>
+                <option value="assigned">Assigned</option>
+                <option value="fixed">Fixed</option>
+              </Field>
+              <ErrorMessage
+                className="error-message"
+                name="status"
+                component="span"
+              />
+            </div>
 
-            <label
-              htmlFor="priority"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Priority:
-            </label>
-            <Field as="select" id="priority" name="priority">
-              <option value="" disabled defaultValue hidden>
-                Select...
-              </option>
-              <option value="low">Low</option>
-              <option value="high">High</option>
-            </Field>
-            <ErrorMessage
-              className="error-message"
-              name="priority"
-              component="span"
-            />
+            <div className="pb-4">
+              <label htmlFor="priority" className="form-label">
+                Priority:
+              </label>
+              <Field
+                as="select"
+                id="priority"
+                name="priority"
+                className="form-input"
+              >
+                <option value="" disabled defaultValue hidden>
+                  Select...
+                </option>
+                <option value="low">Low</option>
+                <option value="high">High</option>
+              </Field>
+              <ErrorMessage
+                className="error-message"
+                name="priority"
+                component="span"
+              />
+            </div>
 
-            <label
-              htmlFor="severity"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Severity:
-            </label>
-            <Field as="select" id="severity" name="severity">
-              <option value="" disabled defaultValue hidden>
-                Select...
-              </option>
-              <option value="low">Low</option>
-              <option value="high">High</option>
-            </Field>
-            <ErrorMessage
-              className="error-message"
-              name="severity"
-              component="span"
-            />
+            <div className="pb-4">
+              <label htmlFor="severity" className="form-label">
+                Severity:
+              </label>
+              <Field
+                as="select"
+                id="severity"
+                name="severity"
+                className="form-input"
+              >
+                <option value="" disabled defaultValue hidden>
+                  Select...
+                </option>
+                <option value="low">Low</option>
+                <option value="high">High</option>
+              </Field>
+              <ErrorMessage
+                className="error-message"
+                name="severity"
+                component="span"
+              />
+            </div>
 
             {props.errorMessage && (
               <p className="error-message">{props.errorMessage}</p>
