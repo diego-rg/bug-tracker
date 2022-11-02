@@ -27,9 +27,7 @@ const Nabvar = (props) => {
               <RiSearchLine />
             </div>
             <input
-              className="w-full pl-8 pr-2 py-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 
-                  dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-400 focus:placeholder-gray-500
-                   focus:bg-white focus:border-gray-300 focus:outline-none focus:shadow-outline-gray form-input"
+              className="form-input pl-8"
               type="text"
               placeholder="Search for bugs"
               aria-label="Search"
