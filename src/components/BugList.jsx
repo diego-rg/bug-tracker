@@ -77,8 +77,8 @@ const BugList = (props) => {
   });
 
   return (
-    <div className="p-2">
-      <div className="flex flex-wrap justify-evenly">{renderBugs}</div>
+    <main className="flex flex-wrap justify-evenly p-2">
+      {renderBugs}
 
       {showBugDetails && (
         <BugDetails
@@ -106,7 +106,7 @@ const BugList = (props) => {
           formValues={formValues}
         />
       )}
-    </div>
+    </main>
   );
 };
 
