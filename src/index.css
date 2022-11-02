@@ -18,4 +18,14 @@
   .error-message {
     @apply block mb-2 text-sm font-medium text-red-600 dark:text-red-500;
   }
+
+  .modal-container {
+    @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-full bg-gray-800 bg-opacity-80 flex justify-center;
+  }
+  .modal-content {
+    @apply relative bg-white rounded-lg shadow dark:bg-gray-800 p-4 m-auto w-full max-w-2xl h-full md:h-auto;
+  }
+  .modal-header {
+    @apply flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600;
+  }
 }
