@@ -24,9 +24,7 @@ const DeleteBug = (props) => {
     <div className="modal-container">
       <div className="modal-content">
         <div className="modal-header">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Warning
-          </h3>
+          <h3 className="modal-title">Warning</h3>
           <button
             onClick={() => props.setShow(false)}
             type="button"
@@ -37,12 +35,15 @@ const DeleteBug = (props) => {
           </button>
         </div>
 
-        <p className="pt-4 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-          This bug will be deleted and its data lost. Do you wish to proceed?
-        </p>
+        <div className="p-4">
+          <p className="modal-description">
+            This bug will be deleted and its data lost. Do you wish to proceed?
+          </p>
 
-        {props.errorMessage && <p className="error-message">{errorMessage}</p>}
-        <div className="flex ">
+          {props.errorMessage && (
+            <p className="error-message">{errorMessage}</p>
+          )}
+
           <button
             onClick={() => props.setShow(false)}
             type="button"
