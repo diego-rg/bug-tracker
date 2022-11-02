@@ -1,5 +1,6 @@
 import { RiMenuLine, RiSearchLine } from "react-icons/ri";
 import { CgMoon, CgSun } from "react-icons/cg";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Nabvar = (props) => {
   const handleNav = () => {
@@ -14,7 +15,11 @@ const Nabvar = (props) => {
     <header className="sticky top-0 z-10 py-4 bg-white shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between h-full px-4 mx-auto text-black dark:text-white">
         <button onClick={handleNav} className="md:hidden btn-menu">
-          <RiMenuLine size={30} />
+          {props.openMenu ? (
+            <AiOutlineClose size={30} />
+          ) : (
+            <RiMenuLine size={30} />
+          )}
         </button>
         <div className="flex justify-center ml-4 flex-1">
           <div className="relative w-full max-w-xl focus-within:text-gray-500">
