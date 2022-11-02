@@ -21,10 +21,7 @@ const DesktopSidebar = (props) => {
 
         <ul className="mt-6">
           <li className="relative px-6 py-4">
-            <button
-              className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
-              href="../index.html"
-            >
+            <button className="btn-sidebar btn-menu" href="../index.html">
               <MdOutlineCreateNewFolder size={40} />
               <span>Create Project</span>
             </button>
@@ -32,7 +29,7 @@ const DesktopSidebar = (props) => {
           <li className="relative px-6 py-4">
             <button
               onClick={() => props.setShowCreateBug(true)}
-              className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
+              className="btn-sidebar btn-menu"
               href="../index.html"
             >
               <RiAddCircleLine size={40} />
@@ -42,7 +39,7 @@ const DesktopSidebar = (props) => {
 
           <li className="relative px-6 py-4">
             <a
-              className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
+              className="btn-sidebar btn-menu"
               href="https://github.com/diego-rg/bug-tracker"
             >
               <RiBookOpenLine size={40} />
@@ -52,7 +49,7 @@ const DesktopSidebar = (props) => {
 
           <li className="relative px-6 py-4">
             <a
-              className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
+              className="btn-sidebar btn-menu"
               href="https://diego-rg.vercel.app/"
             >
               <RiQuestionLine size={40} />
@@ -61,10 +58,7 @@ const DesktopSidebar = (props) => {
           </li>
 
           <li className="relative px-6 py-4">
-            <a
-              className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
-              href="../index.html"
-            >
+            <a className="btn-sidebar btn-menu" href="../index.html">
               <RiLogoutBoxLine size={40} />
               <span>Log out</span>
             </a>

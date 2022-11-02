@@ -10,22 +10,19 @@ import { VscDebug } from "react-icons/vsc";
 const MobileSidebar = (props) => {
   if (props.openMenu && window.innerWidth < 768) {
     return (
-      <nav className="fixed inset-y-0 shadow-md z-20 flex-shrink-0 w-44 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
+      <nav className="fixed inset-y-0 shadow-md z-20 flex-shrink-0 w-40 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden">
         <div className="py-4 text-gray-500 dark:text-gray-400">
           <a
             className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
             href="localhost:3000"
           >
             <VscDebug size={20} />
-            <span className="mr-3 ml-1">Bug Tracker</span>
+            <span className="mr-2 ml-1">Bug Tracker</span>
           </a>
 
           <ul className="mt-6">
             <li className="relative px-6 py-4">
-              <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
-                href="../index.html"
-              >
+              <a className="btn-menu btn-sidebar" href="../index.html">
                 <MdOutlineCreateNewFolder size={40} />
                 <span>Create Project</span>
               </a>
@@ -33,7 +30,7 @@ const MobileSidebar = (props) => {
             <li className="relative px-6 py-4">
               <button
                 onClick={() => props.setShowCreateBug(true)}
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
+                className="btn-sidebar btn-menu"
                 href="../index.html"
               >
                 <RiAddCircleLine size={40} />
@@ -43,7 +40,7 @@ const MobileSidebar = (props) => {
 
             <li className="relative px-6 py-4">
               <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
+                className="btn-sidebar btn-menu"
                 href="https://github.com/diego-rg/bug-tracker"
               >
                 <RiBookOpenLine size={40} />
@@ -53,7 +50,7 @@ const MobileSidebar = (props) => {
 
             <li className="relative px-6 py-4">
               <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
+                className="btn-sidebar btn-menu"
                 href="https://diego-rg.vercel.app/"
               >
                 <RiQuestionLine size={40} />
@@ -62,10 +59,7 @@ const MobileSidebar = (props) => {
             </li>
 
             <li className="relative px-6 py-4">
-              <a
-                className="inline-flex flex-col items-center w-full text-sm font-semibold transition-colors duration-150 btn-menu"
-                href="../index.html"
-              >
+              <a className="btn-sidebar btn-menu" href="../index.html">
                 <RiLogoutBoxLine size={40} />
                 <span>Log out</span>
               </a>
