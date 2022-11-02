@@ -11,7 +11,7 @@ const Nabvar = (props) => {
   };
 
   return (
-    <nav className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+    <header className="sticky top-0 z-10 py-4 bg-white shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between h-full px-4 mx-auto text-black dark:text-white">
         <button onClick={handleNav} className="md:hidden btn-menu">
           <RiMenuLine size={30} />
@@ -42,7 +42,7 @@ const Nabvar = (props) => {
           </button>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
