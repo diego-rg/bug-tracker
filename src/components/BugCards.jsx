@@ -51,7 +51,11 @@ const BugCards = (props) => {
   const renderBugs = props.bugs.map((bug) => {
     return (
       <div key={bug._id} className="card-container">
-        <h5 className="card-title">{bug.name}</h5>
+        <h5 className="card-title">
+          {bug.name.length > 30
+            ? bug.name.slice(0, 30).concat("", "...")
+            : bug.name}
+        </h5>
         <ul className="card-list">
           <li>Status: {bug.status}</li>
           <li>Priority: {bug.priority}</li>
