@@ -31,13 +31,14 @@ const MainPage = (props) => {
         showCreateBug={showCreateBug}
         setShowCreateBug={setShowCreateBug}
       />
+
       <MobileSidebar
         showCreateBug={showCreateBug}
         setShowCreateBug={setShowCreateBug}
         openMenu={openMenu}
       />
 
-      <div className="flex flex-col flex-1">
+      <div>
         <Nabvar
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}

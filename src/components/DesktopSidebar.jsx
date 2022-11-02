@@ -9,7 +9,7 @@ import { VscDebug } from "react-icons/vsc";
 
 const DesktopSidebar = (props) => {
   return (
-    <nav className="z-20 hidden w-44 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
+    <nav className="sticky inset-y-0 left-0 h-screen shadow-md z-10 hidden w-44 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
       <div className="py-4 text-gray-500 dark:text-gray-400">
         <a
           className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
