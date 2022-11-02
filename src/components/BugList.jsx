@@ -52,9 +52,9 @@ const BugList = (props) => {
     return (
       <div
         key={bug._id}
-        className="p-4 m-2 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+        className="p-4 m-2 w-[270px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
       >
-        <h5 className="mb-2 font-semibold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 font-semibold tracking-tight text-gray-900 dark:text-white overflow-x-hidden">
           {bug.name}
         </h5>
         <ul className="flex flex-col text-sm text-gray-500 dark:text-gray-300">

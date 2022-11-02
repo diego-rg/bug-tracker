@@ -5,7 +5,7 @@ const BugDetails = (props) => {
     <div className="modal-container">
       <div className="modal-content">
         <div className="modal-header">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white overflow-x-hidden">
             {props.bugData.name}
           </h3>
           <button
