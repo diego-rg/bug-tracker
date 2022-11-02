@@ -40,7 +40,7 @@ const Nabvar = (props) => {
         <div className="flex items-center flex-shrink-0 ml-4">
           <button
             onClick={handleTheme}
-            className="rounded-md focus:outline-none focus:shadow-outline-gray btn-menu"
+            className="btn-menu"
             aria-label="Toggle color mode"
           >
             {props.dark ? <CgSun size={30} /> : <CgMoon size={30} />}

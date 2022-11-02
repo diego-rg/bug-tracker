@@ -4,7 +4,7 @@ import getBugs from "../scripts/getBugs";
 import DesktopSidebar from "./DesktopSidebar";
 import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
-import BugList from "./BugList";
+import BugCards from "./BugCards";
 import CreateBug from "./CreateBug";
 
 const MainPage = (props) => {
@@ -45,7 +45,7 @@ const MainPage = (props) => {
           dark={props.dark}
           setDark={props.setDark}
         />
-        <BugList bugs={bugs} setBugs={setBugs} />
+        <BugCards bugs={bugs} setBugs={setBugs} />
       </div>
     </div>
   );

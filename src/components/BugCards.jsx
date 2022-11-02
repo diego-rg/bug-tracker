@@ -5,7 +5,7 @@ import BugDetails from "./BugDetails";
 import UpdateBug from "./UpdateBug";
 import DeleteBug from "./DeleteBug";
 
-const BugList = (props) => {
+const BugCards = (props) => {
   const [selectedBug, setSelectedBug] = useState();
   const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
@@ -50,14 +50,9 @@ const BugList = (props) => {
 
   const renderBugs = props.bugs.map((bug) => {
     return (
-      <div
-        key={bug._id}
-        className="p-4 m-2 w-[270px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-      >
-        <h5 className="mb-2 font-semibold tracking-tight text-gray-900 dark:text-white overflow-x-hidden">
-          {bug.name}
-        </h5>
-        <ul className="flex flex-col text-sm text-gray-500 dark:text-gray-300">
+      <div key={bug._id} className="card-container">
+        <h5 className="card-title">{bug.name}</h5>
+        <ul className="card-list">
           <li>Status: {bug.status}</li>
           <li>Priority: {bug.priority}</li>
           <li>Severity: {bug.severity}</li>
@@ -110,4 +105,4 @@ const BugList = (props) => {
   );
 };
 
-export default BugList;
+export default BugCards;
