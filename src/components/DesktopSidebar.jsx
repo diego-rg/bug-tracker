@@ -15,7 +15,9 @@ const DesktopSidebar = (props) => {
           className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
           href="../index.html"
         >
-          <VscDebug size={20} />
+          <span className="text-purple-700 dark:text-purple-500">
+            <VscDebug size={20} />
+          </span>
           <span className="mr-3 ml-1">Bug Tracker</span>
         </a>
 
@@ -61,10 +63,13 @@ const DesktopSidebar = (props) => {
           </li>
 
           <li className="relative px-6 py-4">
-            <a className="btn-sidebar btn-menu opacity-30" href="../index.html">
+            <button
+              className="btn-sidebar btn-menu opacity-30"
+              href="../index.html"
+            >
               <RiLogoutBoxLine size={40} />
               <span>Log out</span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>
