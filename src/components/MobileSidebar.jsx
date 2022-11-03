@@ -22,7 +22,10 @@ const MobileSidebar = (props) => {
 
           <ul className="mt-6">
             <li className="relative px-6 py-4">
-              <a className="btn-menu btn-sidebar" href="../index.html">
+              <a
+                className="btn-menu btn-sidebar opacity-30"
+                href="../index.html"
+              >
                 <MdOutlineCreateNewFolder size={40} />
                 <span>Create Project</span>
               </a>
@@ -59,7 +62,10 @@ const MobileSidebar = (props) => {
             </li>
 
             <li className="relative px-6 py-4">
-              <a className="btn-sidebar btn-menu" href="../index.html">
+              <a
+                className="btn-sidebar btn-menu opacity-30"
+                href="../index.html"
+              >
                 <RiLogoutBoxLine size={40} />
                 <span>Log out</span>
               </a>

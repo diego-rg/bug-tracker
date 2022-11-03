@@ -21,7 +21,10 @@ const DesktopSidebar = (props) => {
 
         <ul className="mt-6">
           <li className="relative px-6 py-4">
-            <button className="btn-sidebar btn-menu" href="../index.html">
+            <button
+              className="btn-sidebar btn-menu opacity-30"
+              href="../index.html"
+            >
               <MdOutlineCreateNewFolder size={40} />
               <span>Create Project</span>
             </button>
@@ -58,7 +61,7 @@ const DesktopSidebar = (props) => {
           </li>
 
           <li className="relative px-6 py-4">
-            <a className="btn-sidebar btn-menu" href="../index.html">
+            <a className="btn-sidebar btn-menu opacity-30" href="../index.html">
               <RiLogoutBoxLine size={40} />
               <span>Log out</span>
             </a>

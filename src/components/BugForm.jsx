@@ -41,7 +41,7 @@ const BugForm = (props) => {
               </label>
               <Field
                 as="textarea"
-                rows="4"
+                rows="5"
                 name="description"
                 id="description"
                 type="text"

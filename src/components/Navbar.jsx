@@ -1,6 +1,8 @@
-import { RiMenuLine, RiSearchLine } from "react-icons/ri";
+import { RiMenuLine } from "react-icons/ri";
 import { CgMoon, CgSun } from "react-icons/cg";
 import { AiOutlineClose } from "react-icons/ai";
+
+import FilterBugs from "./FilterBugs";
 
 const Nabvar = (props) => {
   const handleNav = () => {
@@ -21,19 +23,8 @@ const Nabvar = (props) => {
             <RiMenuLine size={30} />
           )}
         </button>
-        <div className="flex justify-center ml-4 flex-1">
-          <div className="relative w-full max-w-xl focus-within:text-gray-500">
-            <div className="absolute inset-y-0 flex items-center pl-2">
-              <RiSearchLine />
-            </div>
-            <input
-              className="form-input pl-8"
-              type="text"
-              placeholder="Search for bugs"
-              aria-label="Search"
-            />
-          </div>
-        </div>
+
+        <FilterBugs term={props.term} setTerm={props.setTerm} />
 
         <div className="flex items-center flex-shrink-0 ml-4">
           <button

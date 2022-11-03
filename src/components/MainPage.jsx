@@ -8,8 +8,9 @@ import BugCards from "./BugCards";
 import CreateBug from "./CreateBug";
 
 const MainPage = (props) => {
-  const [openMenu, setOpenMenu] = useState(false);
   const [bugs, setBugs] = useState([]);
+  const [term, setTerm] = useState("");
+  const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
 
   //Get all bugs
@@ -40,12 +41,14 @@ const MainPage = (props) => {
 
       <div className="w-full">
         <Nabvar
+          term={term}
+          setTerm={setTerm}
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}
           dark={props.dark}
           setDark={props.setDark}
         />
-        <BugCards bugs={bugs} setBugs={setBugs} />
+        <BugCards bugs={bugs} setBugs={setBugs} term={term} />
       </div>
     </div>
   );
