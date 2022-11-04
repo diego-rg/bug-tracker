@@ -1,6 +1,6 @@
 import { RiSearchLine } from "react-icons/ri";
 
-const FilterBugs = (props) => {
+const SearchBugs = (props) => {
   const onInputChange = (event) => {
     props.setTerm(
       event.target.value
@@ -11,7 +11,7 @@ const FilterBugs = (props) => {
   };
 
   return (
-    <div className="flex justify-center ml-4 flex-1">
+    <div className="flex justify-center ml-2 flex-1">
       <div className="relative w-full max-w-xl focus-within:text-gray-500">
         <div className="absolute inset-y-0 flex items-center pl-2">
           <RiSearchLine />
@@ -29,4 +29,4 @@ const FilterBugs = (props) => {
   );
 };
 
-export default FilterBugs;
+export default SearchBugs;

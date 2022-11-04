@@ -4,12 +4,14 @@ import bugsAPI from "../apis/bugs";
 import BugDetails from "./BugDetails";
 import UpdateBug from "./UpdateBug";
 import DeleteBug from "./DeleteBug";
+import FilterOptions from "./FilterOptions";
 
 const BugCards = (props) => {
   const [selectedBug, setSelectedBug] = useState();
   const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
   const [showDeleteBug, setShowDeleteBug] = useState(false);
+  const [filterByStatus, setFilterByStatus] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -52,16 +54,17 @@ const BugCards = (props) => {
   const renderBugs = props.bugs
     .filter(
       (bug) =>
-        bug.name
+        (bug.name
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .includes(props.term) ||
-        bug.description
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .includes(props.term)
+          bug.description
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .includes(props.term)) &&
+        bug.status.includes(filterByStatus)
     )
     .map((bug) => {
       return (
@@ -91,35 +94,44 @@ const BugCards = (props) => {
     });
 
   return (
-    <main className="flex flex-wrap justify-evenly p-2">
-      {renderBugs}
-
-      {showBugDetails && (
-        <BugDetails
-          bugData={selectedBug}
-          show={showBugDetails}
-          setShow={setShowBugDetails}
+    <main>
+      <div className="flex justify-center">
+        <FilterOptions
+          filterByStatus={filterByStatus}
+          setFilterByStatus={setFilterByStatus}
         />
-      )}
+      </div>
 
-      {showDeleteBug && (
-        <DeleteBug
-          setBugs={props.setBugs}
-          bugId={selectedBug._id}
-          show={showDeleteBug}
-          setShow={setShowDeleteBug}
-        />
-      )}
+      <div className="flex flex-wrap justify-evenly p-2">
+        {renderBugs}
 
-      {showUpdateBug && (
-        <UpdateBug
-          setBugs={props.setBugs}
-          bugId={selectedBug._id}
-          show={showUpdateBug}
-          setShow={setShowUpdateBug}
-          formValues={formValues}
-        />
-      )}
+        {showBugDetails && (
+          <BugDetails
+            bugData={selectedBug}
+            show={showBugDetails}
+            setShow={setShowBugDetails}
+          />
+        )}
+
+        {showDeleteBug && (
+          <DeleteBug
+            setBugs={props.setBugs}
+            bugId={selectedBug._id}
+            show={showDeleteBug}
+            setShow={setShowDeleteBug}
+          />
+        )}
+
+        {showUpdateBug && (
+          <UpdateBug
+            setBugs={props.setBugs}
+            bugId={selectedBug._id}
+            show={showUpdateBug}
+            setShow={setShowUpdateBug}
+            formValues={formValues}
+          />
+        )}
+      </div>
     </main>
   );
 };
