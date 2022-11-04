@@ -13,6 +13,17 @@ const MainPage = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
 
+  //Hide scroll on modal open
+  useEffect(() => {
+    showCreateBug
+      ? document.querySelector("body").classList.add("overflow-hidden")
+      : document.querySelector("body").classList.remove("overflow-hidden");
+
+    showCreateBug
+      ? document.getElementById("app-container").classList.add("mr-4")
+      : document.getElementById("app-container").classList.remove("mr-4");
+  });
+
   //Get all bugs
   useEffect(() => {
     getBugs(setBugs);

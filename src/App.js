@@ -12,7 +12,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div id="app-container">
       <MainPage dark={dark} setDark={setDark} />
     </div>
   );

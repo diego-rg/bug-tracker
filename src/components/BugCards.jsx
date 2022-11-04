@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import bugsAPI from "../apis/bugs";
 import BugDetails from "./BugDetails";
@@ -20,6 +20,17 @@ const BugCards = (props) => {
     status: "",
     priority: "",
     severity: "",
+  });
+
+  //Hide scroll on modal open
+  useEffect(() => {
+    showBugDetails || showUpdateBug || showDeleteBug
+      ? document.querySelector("body").classList.add("overflow-hidden")
+      : document.querySelector("body").classList.remove("overflow-hidden");
+
+    showBugDetails || showUpdateBug || showDeleteBug
+      ? document.getElementById("app-container").classList.add("mr-4")
+      : document.getElementById("app-container").classList.remove("mr-4");
   });
 
   //Set selected bug data to fill the form
