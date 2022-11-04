@@ -1,5 +1,7 @@
 import { AiOutlineClose } from "react-icons/ai";
 
+import timeDateConversor from "../scripts/timeDateConversor";
+
 const BugDetails = (props) => {
   return (
     <div className="modal-container">
@@ -23,8 +25,8 @@ const BugDetails = (props) => {
             <li>Status: {props.bugData.status}</li>
             <li>Priority: {props.bugData.priority}</li>
             <li>Severity: {props.bugData.severity}</li>
-            <li>Creation date: {props.bugData.createdAt}</li>
-            <li>Last update: {props.bugData.updatedAt}</li>
+            <li>Creation date: {timeDateConversor(props.bugData.createdAt)}</li>
+            <li>Last update: {timeDateConversor(props.bugData.updatedAt)}</li>
           </ul>
         </div>
       </div>
