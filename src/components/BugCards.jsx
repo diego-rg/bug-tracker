@@ -89,8 +89,8 @@ const BugCards = (props) => {
       return (
         <div key={bug._id} className="card-container">
           <h5 className="card-title">
-            {bug.name.length > 30
-              ? bug.name.slice(0, 30).concat("", "...")
+            {bug.name.length > 27
+              ? bug.name.slice(0, 27).concat("", "...")
               : bug.name}
           </h5>
           <ul className="card-list">
