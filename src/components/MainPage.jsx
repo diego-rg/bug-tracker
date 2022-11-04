@@ -14,14 +14,18 @@ const MainPage = (props) => {
   const [showCreateBug, setShowCreateBug] = useState(false);
 
   //Hide scroll on modal open
+  const scrollbarVisible = () => {
+    return document.body.clientHeight > window.innerHeight;
+  };
+
   useEffect(() => {
+    showCreateBug && scrollbarVisible()
+      ? document.getElementById("app-container").classList.add("mr-4")
+      : document.getElementById("app-container").classList.remove("mr-4");
+
     showCreateBug
       ? document.querySelector("body").classList.add("overflow-hidden")
       : document.querySelector("body").classList.remove("overflow-hidden");
-
-    showCreateBug
-      ? document.getElementById("app-container").classList.add("mr-4")
-      : document.getElementById("app-container").classList.remove("mr-4");
   });
 
   //Get all bugs

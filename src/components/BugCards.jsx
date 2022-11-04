@@ -23,14 +23,18 @@ const BugCards = (props) => {
   });
 
   //Hide scroll on modal open
+  const scrollbarVisible = () => {
+    return document.body.clientHeight > window.innerHeight;
+  };
+
   useEffect(() => {
+    (showBugDetails || showUpdateBug || showDeleteBug) && scrollbarVisible()
+      ? document.getElementById("app-container").classList.add("mr-4")
+      : document.getElementById("app-container").classList.remove("mr-4");
+
     showBugDetails || showUpdateBug || showDeleteBug
       ? document.querySelector("body").classList.add("overflow-hidden")
       : document.querySelector("body").classList.remove("overflow-hidden");
-
-    showBugDetails || showUpdateBug || showDeleteBug
-      ? document.getElementById("app-container").classList.add("mr-4")
-      : document.getElementById("app-container").classList.remove("mr-4");
   });
 
   //Set selected bug data to fill the form
