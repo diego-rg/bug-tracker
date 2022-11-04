@@ -12,6 +12,8 @@ const BugCards = (props) => {
   const [showUpdateBug, setShowUpdateBug] = useState(false);
   const [showDeleteBug, setShowDeleteBug] = useState(false);
   const [filterByStatus, setFilterByStatus] = useState("");
+  const [filterByPriority, setFilterByPriority] = useState("");
+  const [filterBySeverity, setFilterBySeverity] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -64,7 +66,9 @@ const BugCards = (props) => {
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .includes(props.term)) &&
-        bug.status.includes(filterByStatus)
+        bug.status.includes(filterByStatus) &&
+        bug.priority.includes(filterByPriority) &&
+        bug.severity.includes(filterBySeverity)
     )
     .map((bug) => {
       return (
@@ -97,8 +101,9 @@ const BugCards = (props) => {
     <main>
       <div className="flex justify-center">
         <FilterOptions
-          filterByStatus={filterByStatus}
           setFilterByStatus={setFilterByStatus}
+          setFilterByPriority={setFilterByPriority}
+          setFilterBySeverity={setFilterBySeverity}
         />
       </div>
 

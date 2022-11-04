@@ -3,6 +3,14 @@ const FilterOptions = (props) => {
     props.setFilterByStatus(event.target.value);
   };
 
+  const handleSeverity = (event) => {
+    props.setFilterBySeverity(event.target.value);
+  };
+
+  const handlePriority = (event) => {
+    props.setFilterByPriority(event.target.value);
+  };
+
   return (
     <div className="flex">
       <div className="p-2 md:p-4">
@@ -13,6 +21,7 @@ const FilterOptions = (props) => {
           Status
         </label>
         <select
+          onChange={handleStatus}
           id="status"
           className="form-input text-xs md:text-sm p-1 w-auto"
         >
@@ -33,6 +42,7 @@ const FilterOptions = (props) => {
           Priority
         </label>
         <select
+          onChange={handlePriority}
           id="priority"
           className="form-input text-xs md:text-sm p-1 w-auto"
         >
@@ -52,6 +62,7 @@ const FilterOptions = (props) => {
           Severity
         </label>
         <select
+          onChange={handleSeverity}
           id="severity"
           className="form-input text-xs md:text-sm p-1 w-auto"
         >
