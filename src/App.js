@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import MainPage from "./components/MainPage";
+import Login from "./components/Login";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <div id="app-container">
-      <MainPage dark={dark} setDark={setDark} />
+      {/* <MainPage dark={dark} setDark={setDark} /> */}
+      <Login />
     </div>
   );
 }
