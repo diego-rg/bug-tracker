@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div id="app-container">
-      {/* <MainPage dark={dark} setDark={setDark} /> */}
-      <Login dark={dark} setDark={setDark} />
+      <MainPage dark={dark} setDark={setDark} />
+      {/* <Login dark={dark} setDark={setDark} /> */}
     </div>
   );
 }
