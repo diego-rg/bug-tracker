@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
@@ -14,8 +15,13 @@ function App() {
 
   return (
     <div id="app-container">
-      <MainPage dark={dark} setDark={setDark} />
-      {/* <Login dark={dark} setDark={setDark} /> */}
+      <Routes>
+        <Route path="/" element={<MainPage dark={dark} setDark={setDark} />} />
+        <Route
+          path="/login"
+          element={<Login dark={dark} setDark={setDark} />}
+        />
+      </Routes>
     </div>
   );
 }

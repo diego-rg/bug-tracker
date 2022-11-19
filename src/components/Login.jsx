@@ -11,8 +11,8 @@ const Login = (props) => {
   return (
     <div className="flex justify-center items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div
-        className="flex flex-col h-full min-w-fit lg:w-1/5 items-center bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 
-      dark:border-gray-700 justify-center p-10"
+        className="flex flex-col h-full min-w-fit md:w-1/5 items-center bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 
+      dark:border-gray-700 justify-center p-6 md:p-10"
       >
         <div className="w-full">
           <div className="flex justify-between items-center">
