@@ -3,6 +3,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscDebug } from "react-icons/vsc";
 
+const googleLogin = process.env.REACT_APP_GOOGLE_OAUTH_LOGIN_URL;
+
 const Login = (props) => {
   const handleTheme = () => {
     props.setDark(!props.dark);
@@ -35,20 +37,20 @@ const Login = (props) => {
             <span className="mr-2 ml-3">Bug Tracker</span>
           </div>
 
-          <button className="btn-signIn">
+          <a className="btn-signIn cursor-pointer" href={googleLogin}>
             <FcGoogle size={20} />
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
-          </button>
+          </a>
 
-          <button className="btn-signIn">
+          <a className="btn-signIn cursor-pointer" href="/login">
             <FaGithub size={20} />
             <span className="pl-2 text-md font-bold">Sign in with GitHub</span>
-          </button>
+          </a>
 
-          <button className="btn-signIn">
+          <a className="btn-signIn cursor-pointer" href="/login">
             <FaTwitter size={20} />
             <span className="pl-2 text-md font-bold">Sign in with Twitter</span>
-          </button>
+          </a>
 
           <p className="mt-4">
             <a
