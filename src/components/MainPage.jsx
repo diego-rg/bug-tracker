@@ -6,10 +6,12 @@ import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
 import BugCards from "./BugCards";
 import CreateBug from "./CreateBug";
+import Loader from "./Loader";
 
 const MainPage = (props) => {
   const [bugs, setBugs] = useState([]);
   const [term, setTerm] = useState("");
+  const [loading, setLoading] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
 
@@ -30,11 +32,15 @@ const MainPage = (props) => {
 
   //Get all bugs
   useEffect(() => {
+    setLoading(true);
     getBugs(setBugs);
+    setLoading(false);
   }, []);
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+      {loading && <Loader />}
+
       {showCreateBug && (
         <CreateBug
           setBugs={setBugs}
