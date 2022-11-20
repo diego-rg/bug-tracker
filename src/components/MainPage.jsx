@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import getBugs from "../scripts/getBugs";
+import bugsAPI from "../apis/bugs";
 import DesktopSidebar from "./DesktopSidebar";
 import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
@@ -11,9 +11,20 @@ import Loader from "./Loader";
 const MainPage = (props) => {
   const [bugs, setBugs] = useState([]);
   const [term, setTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
+
+  const getBugs = async () => {
+    try {
+      setLoading(true);
+      const { data } = await bugsAPI.get("/bugs");
+      setBugs(data.bugs);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   //Hide scroll on modal open
   const scrollbarVisible = () => {
@@ -32,9 +43,8 @@ const MainPage = (props) => {
 
   //Get all bugs
   useEffect(() => {
-    setLoading(true);
-    getBugs(setBugs);
-    setLoading(false);
+    getBugs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
