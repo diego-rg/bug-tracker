@@ -13,7 +13,7 @@ const DesktopSidebar = (props) => {
       <div className="py-4 text-gray-500 dark:text-gray-400">
         <a
           className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200"
-          href="../index.html"
+          href="/"
         >
           <span className="text-purple-700 dark:text-purple-500">
             <VscDebug size={20} />
@@ -65,7 +65,7 @@ const DesktopSidebar = (props) => {
           <li className="relative px-6 py-4">
             <button
               className="btn-sidebar btn-menu opacity-30"
-              href="../index.html"
+              href="http://localhost:8000/api/user/logout"
             >
               <RiLogoutBoxLine size={40} />
               <span>Log out</span>
