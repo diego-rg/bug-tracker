@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscDebug } from "react-icons/vsc";
 
-const googleLogin = process.env.REACT_APP_GOOGLE_OAUTH_LOGIN_URL;
+const googleLogin = "http://localhost:8000/api/oauth/google";
 
 const Login = (props) => {
   const handleTheme = () => {

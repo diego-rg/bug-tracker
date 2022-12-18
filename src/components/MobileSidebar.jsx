@@ -64,13 +64,13 @@ const MobileSidebar = (props) => {
             </li>
 
             <li className="relative px-6 py-4">
-              <button
+              <a
                 className="btn-sidebar btn-menu opacity-30"
                 href="http://localhost:8000/api/user/logout"
               >
                 <RiLogoutBoxLine size={40} />
                 <span>Log out</span>
-              </button>
+              </a>
             </li>
           </ul>
         </div>

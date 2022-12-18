@@ -11,16 +11,15 @@ import Loader from "./Loader";
 const MainPage = (props) => {
   const [bugs, setBugs] = useState([]);
   const [term, setTerm] = useState("");
-  const [loading, setLoading] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
 
   const getBugs = async () => {
     try {
-      setLoading(true);
+      props.setLoading(true);
       const { data } = await bugsAPI.get("/bugs");
       setBugs(data.bugs);
-      setLoading(false);
+      props.setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +48,7 @@ const MainPage = (props) => {
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
-      {loading && <Loader />}
+      {props.loading && <Loader />}
 
       {showCreateBug && (
         <CreateBug

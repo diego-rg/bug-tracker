@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
 
 import MainPage from "./components/MainPage";
-import Login from "./components/Login";
 
 function App() {
   const [dark, setDark] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dark
@@ -15,13 +14,12 @@ function App() {
 
   return (
     <div id="app-container">
-      <Routes>
-        <Route path="/" element={<MainPage dark={dark} setDark={setDark} />} />
-        <Route
-          path="/login"
-          element={<Login dark={dark} setDark={setDark} />}
-        />
-      </Routes>
+      <MainPage
+        dark={dark}
+        setDark={setDark}
+        loading={loading}
+        setLoading={setLoading}
+      />
     </div>
   );
 }
