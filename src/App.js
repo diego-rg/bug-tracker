@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import MainPage from "./components/MainPage";
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dark
+    darkMode
       ? document.querySelector("html").classList.add("dark")
       : document.querySelector("html").classList.remove("dark");
   });
 
   return (
     <div id="app-container">
-      <MainPage
-        dark={dark}
-        setDark={setDark}
-        loading={loading}
-        setLoading={setLoading}
-      />
+      <MainPage loading={loading} setLoading={setLoading} />
     </div>
   );
 }

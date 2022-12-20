@@ -1,16 +1,17 @@
 import { RiMenuLine } from "react-icons/ri";
 import { CgMoon, CgSun } from "react-icons/cg";
 import { AiOutlineClose } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
 
+import { toggleTheme } from "../features/theme/themeSlice";
 import SearchBugs from "./SearchBugs";
 
 const Nabvar = (props) => {
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
   const handleNav = () => {
     props.setOpenMenu(!props.openMenu);
-  };
-
-  const handleTheme = () => {
-    props.setDark(!props.dark);
   };
 
   return (
@@ -32,11 +33,11 @@ const Nabvar = (props) => {
 
         <div className="flex items-center flex-shrink-0 ml-2">
           <button
-            onClick={handleTheme}
+            onClick={() => dispatch(toggleTheme())}
             className="btn-menu"
             aria-label="Toggle color mode"
           >
-            {props.dark ? <CgSun size={27} /> : <CgMoon size={27} />}
+            {darkMode ? <CgMoon size={27} /> : <CgSun size={27} />}
           </button>
         </div>
       </div>
