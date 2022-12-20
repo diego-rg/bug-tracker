@@ -10,7 +10,7 @@ function App() {
 
   // Garda o estado do theme no localStorage + aplica a clase para cambialo
   useEffect(() => {
-    localStorage.setItem("darkMode", darkMode);
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
 
     darkMode
       ? document.querySelector("html").classList.add("dark")
