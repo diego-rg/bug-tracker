@@ -8,7 +8,10 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+  // Garda o estado do theme no localStorage + aplica a clase para cambialo
   useEffect(() => {
+    localStorage.setItem("darkMode", darkMode);
+
     darkMode
       ? document.querySelector("html").classList.add("dark")
       : document.querySelector("html").classList.remove("dark");
