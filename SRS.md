@@ -1,6 +1,6 @@
-## Software Requirements Specification: Bug Tracker
+# Software Requirements Specification: Bug Tracker
 
-1.  Introduction
+1. Introduction
 
     1. Purpose of this document
 
@@ -8,16 +8,16 @@
 
     2. Overview
 
-2.  General description
+2. General description
 
-3.  Functional Requirements
+3. Functional Requirements
 
-4.  Interface Requirements
+4. Interface Requirements
 
-5.  Performance Requirements
+5. Performance Requirements
 
-6.  Design Constraints
+6. Design Constraints
 
-7.  Non-Functional Attributes
+7. Non-Functional Attributes
 
-8.  Appendices
+8. Appendices

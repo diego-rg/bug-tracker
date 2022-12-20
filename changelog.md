@@ -1,6 +1,6 @@
-## Bug Tracker: list of versions and changes
+# Bug Tracker: list of versions and changes
 
-### v0.1.0
+## v0.1.0
 
     1. Basic UI
     2. Bugs CRUD (get all bugs, create a bug, update a bug, delete a bug)
