@@ -75,8 +75,6 @@ const MainPage = (props) => {
           setTerm={setTerm}
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}
-          dark={props.dark}
-          setDark={props.setDark}
         />
         <BugCards bugs={bugs} setBugs={setBugs} term={term} />
       </div>
