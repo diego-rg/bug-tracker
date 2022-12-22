@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import MainPage from "./components/MainPage";
+import Login from "./components/Login";
 
 function App() {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -19,7 +21,13 @@ function App() {
 
   return (
     <div id="app-container">
-      <MainPage loading={loading} setLoading={setLoading} />
+      <Routes>
+        <Route
+          path="/"
+          element={<MainPage loading={loading} setLoading={setLoading} />}
+        />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
   );
 }

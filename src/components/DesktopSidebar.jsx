@@ -65,7 +65,7 @@ const DesktopSidebar = (props) => {
           <li className="relative px-6 py-4">
             <a
               className="btn-sidebar btn-menu opacity-30"
-              href="http://localhost:8000/api/user/logout"
+              href="http://localhost:8000/api/users/logout"
             >
               <RiLogoutBoxLine size={40} />
               <span>Log out</span>

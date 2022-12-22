@@ -2,13 +2,15 @@ import { CgMoon, CgSun } from "react-icons/cg";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscDebug } from "react-icons/vsc";
+import { useSelector, useDispatch } from "react-redux";
+
+import { toggleTheme } from "../features/theme/themeSlice";
 
 const googleLogin = "http://localhost:8000/api/oauth/google";
 
-const Login = (props) => {
-  const handleTheme = () => {
-    props.setDark(!props.dark);
-  };
+const Login = () => {
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   return (
     <div className="flex justify-center items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -22,11 +24,11 @@ const Login = (props) => {
               Login
             </h1>
             <button
-              onClick={handleTheme}
+              onClick={() => dispatch(toggleTheme())}
               className="btn-menu"
               aria-label="Toggle color mode"
             >
-              {props.dark ? <CgSun size={27} /> : <CgMoon size={27} />}
+              {darkMode ? <CgSun size={27} /> : <CgMoon size={27} />}
             </button>
           </div>
 
@@ -68,23 +70,6 @@ const Login = (props) => {
               Create account
             </a>
           </p>
-        </div>
-
-        <div className="flex w-full justify-between flex-shrink-0 pt-6">
-          <button
-            onClick={handleTheme}
-            className="btn-menu"
-            aria-label="Toggle color mode"
-          >
-            {props.dark ? <CgSun size={27} /> : <CgMoon size={27} />}
-          </button>
-          <button
-            onClick={handleTheme}
-            className="btn-menu"
-            aria-label="Toggle color mode"
-          >
-            {props.dark ? <CgSun size={27} /> : <CgMoon size={27} />}
-          </button>
         </div>
       </div>
     </div>
