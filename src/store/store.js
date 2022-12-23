@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import themeSlice from "../features/theme/themeSlice";
-import modalSlice from "../features/modal/modalSlice";
+import { apiSlice } from "../features/api/apiSlice";
 
 export const store = configureStore({
   reducer: {
     theme: themeSlice,
-    modal: modalSlice,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
