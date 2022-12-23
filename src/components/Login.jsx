@@ -57,17 +57,17 @@ const Login = () => {
           <p className="mt-4">
             <a
               className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-              href="./forgot-password.html"
+              href="/"
             >
-              Forgot your password?
+              Work in progress
             </a>
           </p>
           <p className="mt-1">
             <a
               className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-              href="./create-account.html"
+              href="/"
             >
-              Create account
+              Work in progress
             </a>
           </p>
         </div>

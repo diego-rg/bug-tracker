@@ -23,7 +23,7 @@ function App() {
     <div id="app-container">
       <Routes>
         <Route
-          path="/"
+          path="*"
           element={<MainPage loading={loading} setLoading={setLoading} />}
         />
         <Route path="/login" element={<Login />} />
