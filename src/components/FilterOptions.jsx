@@ -12,7 +12,7 @@ const FilterOptions = (props) => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex justify-center">
       <div className="p-2 md:p-4">
         <label
           htmlFor="status"

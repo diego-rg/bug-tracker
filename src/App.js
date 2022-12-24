@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -8,7 +8,7 @@ import Login from "./components/Login";
 function App() {
   const darkMode = useSelector((state) => state.theme.darkMode);
 
-  // Dark or light theme
+  // Theme color
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
 
@@ -20,8 +20,8 @@ function App() {
   return (
     <div id="app-container">
       <Routes>
-        <Route path="*" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<MainPage />} />
       </Routes>
     </div>
   );

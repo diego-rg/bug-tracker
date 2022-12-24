@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import bugsAPI from "../apis/bugs";
 import DesktopSidebar from "./DesktopSidebar";
 import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
@@ -9,21 +8,9 @@ import CreateBug from "./CreateBug";
 import Loader from "./Loader";
 
 const MainPage = (props) => {
-  const [bugs, setBugs] = useState([]);
   const [term, setTerm] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
-
-  const getBugs = async () => {
-    try {
-      props.setLoading(true);
-      const { data } = await bugsAPI.get("/bugs");
-      setBugs(data.bugs);
-      props.setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   //Hide scroll on modal open
   const scrollbarVisible = () => {
@@ -40,22 +27,12 @@ const MainPage = (props) => {
       : document.querySelector("body").classList.remove("overflow-hidden");
   });
 
-  //Get all bugs
-  useEffect(() => {
-    getBugs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       {props.loading && <Loader />}
 
       {showCreateBug && (
-        <CreateBug
-          setBugs={setBugs}
-          show={showCreateBug}
-          setShow={setShowCreateBug}
-        />
+        <CreateBug show={showCreateBug} setShow={setShowCreateBug} />
       )}
 
       <DesktopSidebar
@@ -76,7 +53,7 @@ const MainPage = (props) => {
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}
         />
-        <BugCards bugs={bugs} setBugs={setBugs} term={term} />
+        <BugCards term={term} />
       </div>
     </div>
   );

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+import { useGetAllBugsQuery } from "../features/bugs/bugsApi";
 import bugsAPI from "../apis/bugs";
 import BugDetails from "./BugDetails";
 import UpdateBug from "./UpdateBug";
 import DeleteBug from "./DeleteBug";
 import FilterOptions from "./FilterOptions";
+import Loader from "./Loader";
 
 const BugCards = (props) => {
+  const { data, error, isLoading } = useGetAllBugsQuery();
+
   const [selectedBug, setSelectedBug] = useState();
   const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
@@ -67,63 +71,75 @@ const BugCards = (props) => {
     setSelectedBug(bug);
   };
 
-  //Filter and render bugs
-  const renderBugs = props.bugs
-    .filter(
-      (bug) =>
-        (bug.name
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .includes(props.term) ||
-          bug.description
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .includes(props.term)) &&
-        bug.status.includes(filterByStatus) &&
-        bug.priority.includes(filterByPriority) &&
-        bug.severity.includes(filterBySeverity)
-    )
-    .map((bug) => {
-      return (
-        <div key={bug._id} className="card-container">
-          <h5 className="card-title">
-            {bug.name.length > 27
-              ? bug.name.slice(0, 27).concat("", "...")
-              : bug.name}
-          </h5>
-          <ul className="card-list">
-            <li>Status: {bug.status}</li>
-            <li>Priority: {bug.priority}</li>
-            <li>Severity: {bug.severity}</li>
-          </ul>
-
-          <button onClick={() => openBugDetails(bug)} className="btn-primary ">
-            Details
-          </button>
-          <button onClick={() => openUpdateBug(bug)} className="btn-primary ">
-            Edit
-          </button>
-          <button onClick={() => openDeleteBug(bug)} className="btn-danger">
-            Delete
-          </button>
-        </div>
-      );
-    });
-
   return (
     <main>
-      <div className="flex justify-center">
-        <FilterOptions
-          setFilterByStatus={setFilterByStatus}
-          setFilterByPriority={setFilterByPriority}
-          setFilterBySeverity={setFilterBySeverity}
-        />
-      </div>
+      <FilterOptions
+        setFilterByStatus={setFilterByStatus}
+        setFilterByPriority={setFilterByPriority}
+        setFilterBySeverity={setFilterBySeverity}
+      />
 
       <div className="flex flex-wrap justify-evenly p-2">
-        {renderBugs}
+        {error ? (
+          <p>ERROR</p>
+        ) : isLoading ? (
+          <Loader />
+        ) : data ? (
+          <>
+            {data.bugs
+              .filter(
+                (bug) =>
+                  (bug.name
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .includes(props.term) ||
+                    bug.description
+                      .toLowerCase()
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .includes(props.term)) &&
+                  bug.status.includes(filterByStatus) &&
+                  bug.priority.includes(filterByPriority) &&
+                  bug.severity.includes(filterBySeverity)
+              )
+              .map((bug) => {
+                return (
+                  <div key={bug._id} className="card-container">
+                    <h5 className="card-title">
+                      {bug.name.length > 27
+                        ? bug.name.slice(0, 27).concat("", "...")
+                        : bug.name}
+                    </h5>
+                    <ul className="card-list">
+                      <li>Status: {bug.status}</li>
+                      <li>Priority: {bug.priority}</li>
+                      <li>Severity: {bug.severity}</li>
+                    </ul>
+
+                    <button
+                      onClick={() => openBugDetails(bug)}
+                      className="btn-primary "
+                    >
+                      Details
+                    </button>
+                    <button
+                      onClick={() => openUpdateBug(bug)}
+                      className="btn-primary "
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => openDeleteBug(bug)}
+                      className="btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                );
+              })}
+          </>
+        ) : null}
 
         {showBugDetails && (
           <BugDetails
@@ -135,7 +151,6 @@ const BugCards = (props) => {
 
         {showDeleteBug && (
           <DeleteBug
-            setBugs={props.setBugs}
             bugId={selectedBug._id}
             show={showDeleteBug}
             setShow={setShowDeleteBug}
@@ -144,7 +159,6 @@ const BugCards = (props) => {
 
         {showUpdateBug && (
           <UpdateBug
-            setBugs={props.setBugs}
             bugId={selectedBug._id}
             show={showUpdateBug}
             setShow={setShowUpdateBug}
