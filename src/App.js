@@ -4,18 +4,11 @@ import { useSelector } from "react-redux";
 
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
-import Loader from "./components/Loader";
-import { useGetCurrentUserQuery } from "./features/api/apiSlice";
 
 function App() {
   const darkMode = useSelector((state) => state.theme.darkMode);
-  const { data, error, isLoading, isSuccess } = useGetCurrentUserQuery();
 
-  console.log(data);
-
-  const [loading, setLoading] = useState(false);
-
-  // Garda o estado do theme no localStorage + aplica a clase para cambialo
+  // Dark or light theme
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
 
@@ -27,17 +20,9 @@ function App() {
   return (
     <div id="app-container">
       <Routes>
-        <Route
-          path="*"
-          element={<MainPage loading={loading} setLoading={setLoading} />}
-        />
+        <Route path="*" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <div className="isErrorIsLoading">
-        {error && <p>An error occured</p>}
-        {isLoading && <Loader />}
-      </div>
-      {isSuccess && <>{data}</>}
     </div>
   );
 }
