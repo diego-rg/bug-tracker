@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 import bugsAPI from "../apis/bugs";
-import getBugs from "../scripts/getBugs";
 
 const DeleteBug = (props) => {
   const [errorMessage, setErrorMessage] = useState();
@@ -13,7 +12,7 @@ const DeleteBug = (props) => {
       const deleteBugResponse = await bugsAPI.delete(`/bugs/${bugId}`);
       if (deleteBugResponse.status === 200) {
         props.setShow(false);
-        getBugs(props.setBugs);
+        //actualizar bugs
       }
     } catch (error) {
       setErrorMessage("Error: bug removal failed.");

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
-import getBugs from "../scripts/getBugs";
 
 const CreateBug = (props) => {
   const [errorMessage, setErrorMessage] = useState();
@@ -20,7 +19,7 @@ const CreateBug = (props) => {
       if (postBugResponse.status === 200) {
         console.log(postBugResponse.data.message);
         props.setShow(false);
-        getBugs(props.setBugs);
+        //actualizar bugs
       }
     } catch (error) {
       if (
