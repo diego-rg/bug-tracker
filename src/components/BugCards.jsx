@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  useGetAllBugsQuery,
-  // useGetBugByIdQuery,
-} from "../features/bugs/bugsApi";
-import bugsAPI from "../apis/bugs";
+import { useGetAllBugsQuery } from "../features/bugs/bugsApi";
+import { selectBug } from "../features/bugs/bugsSlice";
 import BugDetails from "./BugDetails";
 import UpdateBug from "./UpdateBug";
 import DeleteBug from "./DeleteBug";
@@ -14,17 +11,11 @@ import Loader from "./Loader";
 
 const BugCards = () => {
   const dispatch = useDispatch();
-  const selectedBug = useSelector((state) => state.selectedBug);
+  const selectedBug = useSelector((state) => state.bugs.selectedBug);
   const term = useSelector((state) => state.filters.term);
   const status = useSelector((state) => state.filters.status);
   const priority = useSelector((state) => state.filters.priority);
   const severity = useSelector((state) => state.filters.severity);
-
-  // const {
-  //   data: bug,
-  //   error: bugError,
-  //   isLoading: isLoadingBug,
-  // } = useGetBugByIdQuery(selectedBug);
 
   const { data: bugs, error: bugsError, isLoading: isLoadingBugs } = useGetAllBugsQuery();
 
@@ -54,34 +45,29 @@ const BugCards = () => {
       : document.querySelector("body").classList.remove("overflow-hidden");
   });
 
-  //Set selected bug data to fill the form
-  const getBugById = async (bugId) => {
-    try {
-      const { data } = await bugsAPI.get(`/bugs/${bugId}`);
-      const { name, description, status, priority, severity } = data.bug;
-      setFormValues({ name, description, status, priority, severity });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   //Show details modal
   const openBugDetails = (bug) => {
     setShowBugDetails(true);
-    dispatch(selectedBug);
+    dispatch(selectBug(bug));
   };
 
   //Show update modal
   const openUpdateBug = (bug) => {
-    getBugById(bug._id);
+    setFormValues({
+      name: bug.name,
+      description: bug.description,
+      status: bug.status,
+      priority: bug.priority,
+      severity: bug.severity,
+    });
     setShowUpdateBug(true);
-    dispatch(selectedBug);
+    dispatch(selectBug(bug));
   };
 
   //Show delete modal
   const openDeleteBug = (bug) => {
     setShowDeleteBug(true);
-    dispatch(selectedBug);
+    dispatch(selectBug(bug));
   };
 
   return (
@@ -139,7 +125,7 @@ const BugCards = () => {
           </>
         ) : null}
 
-        {showBugDetails && <BugDetails bugData={selectedBug} show={showBugDetails} setShow={setShowBugDetails} />}
+        {showBugDetails && <BugDetails show={showBugDetails} setShow={setShowBugDetails} />}
 
         {showDeleteBug && <DeleteBug bugId={selectedBug._id} show={showDeleteBug} setShow={setShowDeleteBug} />}
 

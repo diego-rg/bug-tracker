@@ -1,13 +1,16 @@
+import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 
 import timeDateConversor from "../scripts/timeDateConversor";
 
 const BugDetails = (props) => {
+  const selectedBug = useSelector((state) => state.bugs.selectedBug);
+
   return (
     <div className="modal-container">
       <div className="modal-content">
         <div className="modal-header">
-          <h3 className="modal-title">{props.bugData.name}</h3>
+          <h3 className="modal-title">{selectedBug.name}</h3>
           <button onClick={() => props.setShow(false)} type="button" className="btn-menu">
             <AiOutlineClose size={24} />
             <span className="sr-only">Close modal</span>
@@ -15,14 +18,14 @@ const BugDetails = (props) => {
         </div>
 
         <div className="p-4">
-          <p className="modal-description">{props.bugData.description}</p>
+          <p className="modal-description">{selectedBug.description}</p>
 
           <ul className="modal-list">
-            <li>Status: {props.bugData.status}</li>
-            <li>Priority: {props.bugData.priority}</li>
-            <li>Severity: {props.bugData.severity}</li>
-            <li>Creation date: {timeDateConversor(props.bugData.createdAt)}</li>
-            <li>Last update: {timeDateConversor(props.bugData.updatedAt)}</li>
+            <li>Status: {selectedBug.status}</li>
+            <li>Priority: {selectedBug.priority}</li>
+            <li>Severity: {selectedBug.severity}</li>
+            <li>Creation date: {timeDateConversor(selectedBug.createdAt)}</li>
+            <li>Last update: {timeDateConversor(selectedBug.updatedAt)}</li>
           </ul>
         </div>
       </div>

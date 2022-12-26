@@ -10,7 +10,7 @@ import { bugsApi } from "../features/bugs/bugsApi";
 export const store = configureStore({
   reducer: {
     theme: themeSlice,
-    bug: bugsSlice,
+    bugs: bugsSlice,
     filters: filtersSlice,
     [authApi.reducerPath]: authApi.reducer,
     [bugsApi.reducerPath]: bugsApi.reducer,
