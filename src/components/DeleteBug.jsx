@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { AiOutlineClose } from "react-icons/ai";
 
 import bugsAPI from "../apis/bugs";
 
 const DeleteBug = (props) => {
+  const selectedBug = useSelector((state) => state.bugs.selectedBug);
+
   const [errorMessage, setErrorMessage] = useState();
 
   const deleteBug = async (bugId) => {
@@ -38,7 +41,7 @@ const DeleteBug = (props) => {
           <button onClick={() => props.setShow(false)} type="button" className="btn-primary">
             No, go back
           </button>
-          <button onClick={() => deleteBug(props.bugId)} type="button" className="btn-danger">
+          <button onClick={() => deleteBug(selectedBug._id)} type="button" className="btn-danger">
             Yes, delete it
           </button>
         </div>
