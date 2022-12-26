@@ -27,20 +27,11 @@ const MainPage = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
-      {showCreateBug && (
-        <CreateBug show={showCreateBug} setShow={setShowCreateBug} />
-      )}
+      {showCreateBug && <CreateBug show={showCreateBug} setShow={setShowCreateBug} />}
 
-      <DesktopSidebar
-        showCreateBug={showCreateBug}
-        setShowCreateBug={setShowCreateBug}
-      />
+      <DesktopSidebar showCreateBug={showCreateBug} setShowCreateBug={setShowCreateBug} />
 
-      <MobileSidebar
-        showCreateBug={showCreateBug}
-        setShowCreateBug={setShowCreateBug}
-        openMenu={openMenu}
-      />
+      <MobileSidebar showCreateBug={showCreateBug} setShowCreateBug={setShowCreateBug} openMenu={openMenu} />
 
       <div className="w-full">
         <Nabvar openMenu={openMenu} setOpenMenu={setOpenMenu} />

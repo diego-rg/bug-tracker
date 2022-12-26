@@ -6,7 +6,7 @@ import { RiSearchLine } from "react-icons/ri";
 const SearchBugs = () => {
   const dispatch = useDispatch();
 
-  const onInputChange = (event) => {
+  const handleInput = (event) => {
     dispatch(
       setTerm(
         event.target.value
@@ -24,7 +24,7 @@ const SearchBugs = () => {
           <RiSearchLine />
         </div>
         <input
-          onChange={onInputChange}
+          onChange={handleInput}
           className="form-input pl-8"
           type="text"
           placeholder="Search for bugs"

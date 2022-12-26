@@ -16,6 +16,9 @@ const BugCards = () => {
   const dispatch = useDispatch();
   const selectedBug = useSelector((state) => state.selectedBug);
   const term = useSelector((state) => state.filters.term);
+  const status = useSelector((state) => state.filters.status);
+  const priority = useSelector((state) => state.filters.priority);
+  const severity = useSelector((state) => state.filters.severity);
 
   // const {
   //   data: bug,
@@ -23,18 +26,11 @@ const BugCards = () => {
   //   isLoading: isLoadingBug,
   // } = useGetBugByIdQuery(selectedBug);
 
-  const {
-    data: bugs,
-    error: bugsError,
-    isLoading: isLoadingBugs,
-  } = useGetAllBugsQuery();
+  const { data: bugs, error: bugsError, isLoading: isLoadingBugs } = useGetAllBugsQuery();
 
   const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
   const [showDeleteBug, setShowDeleteBug] = useState(false);
-  const [filterByStatus, setFilterByStatus] = useState("");
-  const [filterByPriority, setFilterByPriority] = useState("");
-  const [filterBySeverity, setFilterBySeverity] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -90,11 +86,7 @@ const BugCards = () => {
 
   return (
     <main>
-      <FilterOptions
-        setFilterByStatus={setFilterByStatus}
-        setFilterByPriority={setFilterByPriority}
-        setFilterBySeverity={setFilterBySeverity}
-      />
+      <FilterOptions />
 
       <div className="flex flex-wrap justify-evenly p-2">
         {bugsError ? (
@@ -116,17 +108,15 @@ const BugCards = () => {
                       .normalize("NFD")
                       .replace(/[\u0300-\u036f]/g, "")
                       .includes(term)) &&
-                  bug.status.includes(filterByStatus) &&
-                  bug.priority.includes(filterByPriority) &&
-                  bug.severity.includes(filterBySeverity)
+                  bug.status.includes(status) &&
+                  bug.priority.includes(priority) &&
+                  bug.severity.includes(severity)
               )
               .map((bug) => {
                 return (
                   <div key={bug._id} className="card-container">
                     <h5 className="card-title">
-                      {bug.name.length > 27
-                        ? bug.name.slice(0, 27).concat("", "...")
-                        : bug.name}
+                      {bug.name.length > 27 ? bug.name.slice(0, 27).concat("", "...") : bug.name}
                     </h5>
                     <ul className="card-list">
                       <li>Status: {bug.status}</li>
@@ -134,22 +124,13 @@ const BugCards = () => {
                       <li>Severity: {bug.severity}</li>
                     </ul>
 
-                    <button
-                      onClick={() => openBugDetails(bug)}
-                      className="btn-primary "
-                    >
+                    <button onClick={() => openBugDetails(bug)} className="btn-primary ">
                       Details
                     </button>
-                    <button
-                      onClick={() => openUpdateBug(bug)}
-                      className="btn-primary "
-                    >
+                    <button onClick={() => openUpdateBug(bug)} className="btn-primary ">
                       Edit
                     </button>
-                    <button
-                      onClick={() => openDeleteBug(bug)}
-                      className="btn-danger"
-                    >
+                    <button onClick={() => openDeleteBug(bug)} className="btn-danger">
                       Delete
                     </button>
                   </div>
@@ -158,29 +139,12 @@ const BugCards = () => {
           </>
         ) : null}
 
-        {showBugDetails && (
-          <BugDetails
-            bugData={selectedBug}
-            show={showBugDetails}
-            setShow={setShowBugDetails}
-          />
-        )}
+        {showBugDetails && <BugDetails bugData={selectedBug} show={showBugDetails} setShow={setShowBugDetails} />}
 
-        {showDeleteBug && (
-          <DeleteBug
-            bugId={selectedBug._id}
-            show={showDeleteBug}
-            setShow={setShowDeleteBug}
-          />
-        )}
+        {showDeleteBug && <DeleteBug bugId={selectedBug._id} show={showDeleteBug} setShow={setShowDeleteBug} />}
 
         {showUpdateBug && (
-          <UpdateBug
-            bugId={selectedBug._id}
-            show={showUpdateBug}
-            setShow={setShowUpdateBug}
-            formValues={formValues}
-          />
+          <UpdateBug bugId={selectedBug._id} show={showUpdateBug} setShow={setShowUpdateBug} formValues={formValues} />
         )}
       </div>
     </main>
