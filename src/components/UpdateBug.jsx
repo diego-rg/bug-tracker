@@ -8,20 +8,14 @@ const UpdateBug = (props) => {
 
   const updateBug = async (bugData) => {
     try {
-      const updateBugResponse = await bugsAPI.put(
-        `/bugs/${props.bugId}`,
-        bugData
-      );
+      const updateBugResponse = await bugsAPI.put(`/bugs/${props.bugId}`, bugData);
       if (updateBugResponse.status === 200) {
         console.log(updateBugResponse.data.message);
         props.setShow(false);
         //update bugs
       }
     } catch (error) {
-      if (
-        error.response.data.message ===
-        "Bug validation failed: name: A bug with that name already exists"
-      ) {
+      if (error.response.data.message === "Bug validation failed: name: A bug with that name already exists") {
         setErrorMessage("Error: a bug with that name already exists.");
       } else {
         setErrorMessage("Error: bug data update failed.");

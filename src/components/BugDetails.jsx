@@ -8,11 +8,7 @@ const BugDetails = (props) => {
       <div className="modal-content">
         <div className="modal-header">
           <h3 className="modal-title">{props.bugData.name}</h3>
-          <button
-            onClick={() => props.setShow(false)}
-            type="button"
-            className="btn-menu"
-          >
+          <button onClick={() => props.setShow(false)} type="button" className="btn-menu">
             <AiOutlineClose size={24} />
             <span className="sr-only">Close modal</span>
           </button>

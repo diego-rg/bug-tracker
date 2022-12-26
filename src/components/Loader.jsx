@@ -27,10 +27,9 @@ const Loader = () => {
         </div>
         <div className="p-4">
           <p className="modal-description">
-            <span className="text-red-600 font-bold">IMPORTANT:</span> the API
-            is deployed in a free web service. This can cause a response delay
-            of up to 30 seconds for the first request that comes in after a
-            period of inactivity.
+            <span className="text-red-600 font-bold">IMPORTANT:</span> the API is deployed in a free web service. This
+            can cause a response delay of up to 30 seconds for the first request that comes in after a period of
+            inactivity.
           </p>
         </div>
       </div>

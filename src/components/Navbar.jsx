@@ -17,26 +17,14 @@ const Nabvar = (props) => {
   return (
     <header className="sticky top-0 z-10 py-4 bg-white shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between h-full px-4 mx-auto text-black dark:text-white">
-        <button
-          onClick={handleNav}
-          className="md:hidden btn-menu"
-          aria-label="Toggle mobile menu"
-        >
-          {props.openMenu ? (
-            <AiOutlineClose size={27} />
-          ) : (
-            <RiMenuLine size={27} />
-          )}
+        <button onClick={handleNav} className="md:hidden btn-menu" aria-label="Toggle mobile menu">
+          {props.openMenu ? <AiOutlineClose size={27} /> : <RiMenuLine size={27} />}
         </button>
 
         <SearchBugs />
 
         <div className="flex items-center flex-shrink-0 ml-2">
-          <button
-            onClick={() => dispatch(toggleTheme())}
-            className="btn-menu"
-            aria-label="Toggle color mode"
-          >
+          <button onClick={() => dispatch(toggleTheme())} className="btn-menu" aria-label="Toggle color mode">
             {darkMode ? <CgMoon size={27} /> : <CgSun size={27} />}
           </button>
         </div>

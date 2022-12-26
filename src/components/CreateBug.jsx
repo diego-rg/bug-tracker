@@ -22,10 +22,7 @@ const CreateBug = (props) => {
         //actualizar bugs
       }
     } catch (error) {
-      if (
-        error.response.data.message ===
-        "Bug validation failed: name: A bug with that name already exists"
-      ) {
+      if (error.response.data.message === "Bug validation failed: name: A bug with that name already exists") {
         setErrorMessage("Error: a bug with that name already exists.");
       } else {
         setErrorMessage("Error: bug creation failed.");

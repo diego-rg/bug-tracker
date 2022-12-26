@@ -20,14 +20,8 @@ const Login = () => {
       >
         <div className="w-full">
           <div className="flex justify-between items-center">
-            <h1 className="text-xl font-semibold text-gray-700 dark:text-gray-200">
-              Login
-            </h1>
-            <button
-              onClick={() => dispatch(toggleTheme())}
-              className="btn-menu"
-              aria-label="Toggle color mode"
-            >
+            <h1 className="text-xl font-semibold text-gray-700 dark:text-gray-200">Login</h1>
+            <button onClick={() => dispatch(toggleTheme())} className="btn-menu" aria-label="Toggle color mode">
               {darkMode ? <CgSun size={27} /> : <CgMoon size={27} />}
             </button>
           </div>
@@ -55,18 +49,12 @@ const Login = () => {
           </a>
 
           <p className="mt-4">
-            <a
-              className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-              href="/"
-            >
+            <a className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="/">
               Work in progress
             </a>
           </p>
           <p className="mt-1">
-            <a
-              className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-              href="/"
-            >
+            <a className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="/">
               Work in progress
             </a>
           </p>
