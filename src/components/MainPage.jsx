@@ -5,10 +5,8 @@ import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
 import BugCards from "./BugCards";
 import CreateBug from "./CreateBug";
-import Loader from "./Loader";
 
-const MainPage = (props) => {
-  const [term, setTerm] = useState("");
+const MainPage = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [showCreateBug, setShowCreateBug] = useState(false);
 
@@ -29,8 +27,6 @@ const MainPage = (props) => {
 
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
-      {props.loading && <Loader />}
-
       {showCreateBug && (
         <CreateBug show={showCreateBug} setShow={setShowCreateBug} />
       )}
@@ -47,13 +43,8 @@ const MainPage = (props) => {
       />
 
       <div className="w-full">
-        <Nabvar
-          term={term}
-          setTerm={setTerm}
-          openMenu={openMenu}
-          setOpenMenu={setOpenMenu}
-        />
-        <BugCards term={term} />
+        <Nabvar openMenu={openMenu} setOpenMenu={setOpenMenu} />
+        <BugCards />
       </div>
     </div>
   );

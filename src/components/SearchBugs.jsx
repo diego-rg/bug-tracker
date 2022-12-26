@@ -1,12 +1,19 @@
+import { useDispatch } from "react-redux";
+
+import { setTerm } from "../features/filters/filtersSlice";
 import { RiSearchLine } from "react-icons/ri";
 
-const SearchBugs = (props) => {
+const SearchBugs = () => {
+  const dispatch = useDispatch();
+
   const onInputChange = (event) => {
-    props.setTerm(
-      event.target.value
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
+    dispatch(
+      setTerm(
+        event.target.value
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+      )
     );
   };
 
@@ -17,7 +24,6 @@ const SearchBugs = (props) => {
           <RiSearchLine />
         </div>
         <input
-          value={props.term}
           onChange={onInputChange}
           className="form-input pl-8"
           type="text"

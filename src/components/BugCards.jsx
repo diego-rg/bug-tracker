@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { useGetAllBugsQuery } from "../features/bugs/bugsApi";
+import {
+  useGetAllBugsQuery,
+  // useGetBugByIdQuery,
+} from "../features/bugs/bugsApi";
 import bugsAPI from "../apis/bugs";
 import BugDetails from "./BugDetails";
 import UpdateBug from "./UpdateBug";
@@ -8,10 +12,23 @@ import DeleteBug from "./DeleteBug";
 import FilterOptions from "./FilterOptions";
 import Loader from "./Loader";
 
-const BugCards = (props) => {
-  const { data, error, isLoading } = useGetAllBugsQuery();
+const BugCards = () => {
+  const dispatch = useDispatch();
+  const selectedBug = useSelector((state) => state.selectedBug);
+  const term = useSelector((state) => state.filters.term);
 
-  const [selectedBug, setSelectedBug] = useState();
+  // const {
+  //   data: bug,
+  //   error: bugError,
+  //   isLoading: isLoadingBug,
+  // } = useGetBugByIdQuery(selectedBug);
+
+  const {
+    data: bugs,
+    error: bugsError,
+    isLoading: isLoadingBugs,
+  } = useGetAllBugsQuery();
+
   const [showBugDetails, setShowBugDetails] = useState(false);
   const [showUpdateBug, setShowUpdateBug] = useState(false);
   const [showDeleteBug, setShowDeleteBug] = useState(false);
@@ -55,20 +72,20 @@ const BugCards = (props) => {
   //Show details modal
   const openBugDetails = (bug) => {
     setShowBugDetails(true);
-    setSelectedBug(bug);
+    dispatch(selectedBug);
   };
 
   //Show update modal
   const openUpdateBug = (bug) => {
     getBugById(bug._id);
     setShowUpdateBug(true);
-    setSelectedBug(bug);
+    dispatch(selectedBug);
   };
 
   //Show delete modal
   const openDeleteBug = (bug) => {
     setShowDeleteBug(true);
-    setSelectedBug(bug);
+    dispatch(selectedBug);
   };
 
   return (
@@ -80,25 +97,25 @@ const BugCards = (props) => {
       />
 
       <div className="flex flex-wrap justify-evenly p-2">
-        {error ? (
+        {bugsError ? (
           <p>ERROR</p>
-        ) : isLoading ? (
+        ) : isLoadingBugs ? (
           <Loader />
-        ) : data ? (
+        ) : bugs ? (
           <>
-            {data.bugs
+            {bugs.bugs
               .filter(
                 (bug) =>
                   (bug.name
                     .toLowerCase()
                     .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "")
-                    .includes(props.term) ||
+                    .includes(term) ||
                     bug.description
                       .toLowerCase()
                       .normalize("NFD")
                       .replace(/[\u0300-\u036f]/g, "")
-                      .includes(props.term)) &&
+                      .includes(term)) &&
                   bug.status.includes(filterByStatus) &&
                   bug.priority.includes(filterByPriority) &&
                   bug.severity.includes(filterBySeverity)

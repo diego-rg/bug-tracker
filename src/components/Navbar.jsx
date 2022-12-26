@@ -29,7 +29,7 @@ const Nabvar = (props) => {
           )}
         </button>
 
-        <SearchBugs term={props.term} setTerm={props.setTerm} />
+        <SearchBugs />
 
         <div className="flex items-center flex-shrink-0 ml-2">
           <button

@@ -9,7 +9,10 @@ export const bugsApi = createApi({
     getAllBugs: builder.query({
       query: () => "bugs",
     }),
+    getBugById: builder.query({
+      query: (bugId) => `/bugs/${bugId}`,
+    }),
   }),
 });
 
-export const { useGetAllBugsQuery } = bugsApi;
+export const { useGetAllBugsQuery, useGetBugByIdQuery } = bugsApi;

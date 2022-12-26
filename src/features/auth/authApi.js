@@ -8,6 +8,10 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     getCurrentUser: builder.query({
       query: () => "users/current",
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
     }),
   }),
 });
