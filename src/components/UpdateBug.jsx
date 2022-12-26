@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
 
 const UpdateBug = (props) => {
+  const selectedBug = useSelector((state) => state.bugs.selectedBug);
   const [errorMessage, setErrorMessage] = useState();
 
   const updateBug = async (bugData) => {
     try {
-      const updateBugResponse = await bugsAPI.put(`/bugs/${props.bugId}`, bugData);
+      const updateBugResponse = await bugsAPI.put(`/bugs/${selectedBug._id}`, bugData);
       if (updateBugResponse.status === 200) {
         console.log(updateBugResponse.data.message);
         props.setShow(false);

@@ -129,9 +129,7 @@ const BugCards = () => {
 
         {showDeleteBug && <DeleteBug show={showDeleteBug} setShow={setShowDeleteBug} />}
 
-        {showUpdateBug && (
-          <UpdateBug bugId={selectedBug._id} show={showUpdateBug} setShow={setShowUpdateBug} formValues={formValues} />
-        )}
+        {showUpdateBug && <UpdateBug show={showUpdateBug} setShow={setShowUpdateBug} formValues={formValues} />}
       </div>
     </main>
   );
