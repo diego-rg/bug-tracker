@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
+import { switchCreateBugModal } from "../features/modals/modalSlice";
 
-const CreateBug = (props) => {
+const CreateBug = () => {
+  const dispatch = useDispatch();
+
   const [errorMessage, setErrorMessage] = useState();
   const [formValues] = useState({
     name: "",
@@ -18,7 +22,7 @@ const CreateBug = (props) => {
       const postBugResponse = await bugsAPI.post("/bugs", bugData);
       if (postBugResponse.status === 200) {
         console.log(postBugResponse.data.message);
-        props.setShow(false);
+        dispatch(switchCreateBugModal());
         //actualizar bugs
       }
     } catch (error) {
@@ -34,9 +38,8 @@ const CreateBug = (props) => {
     <BugForm
       errorMessage={errorMessage}
       initialValues={formValues}
-      show={props.show}
-      setShow={props.setShow}
       onSubmit={submitBug}
+      reducer={switchCreateBugModal()}
     />
   );
 };

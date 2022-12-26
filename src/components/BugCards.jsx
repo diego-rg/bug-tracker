@@ -11,7 +11,6 @@ import Loader from "./Loader";
 
 const BugCards = () => {
   const dispatch = useDispatch();
-  const selectedBug = useSelector((state) => state.bugs.selectedBug);
   const term = useSelector((state) => state.filters.term);
   const status = useSelector((state) => state.filters.status);
   const priority = useSelector((state) => state.filters.priority);

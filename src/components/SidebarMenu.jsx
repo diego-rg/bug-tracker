@@ -1,8 +1,14 @@
+import { useDispatch } from "react-redux";
+
 import { RiAddCircleLine, RiBookOpenLine, RiQuestionLine, RiLogoutBoxLine } from "react-icons/ri";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { VscDebug } from "react-icons/vsc";
 
+import { switchCreateBugModal } from "../features/modals/modalSlice";
+
 const SidebarMenu = (props) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="py-4 text-gray-500 dark:text-gray-400">
       <a className="flex justify-center items-center text-lg font-bold text-gray-800 dark:text-gray-200" href="/">
@@ -20,7 +26,7 @@ const SidebarMenu = (props) => {
           </button>
         </li>
         <li className="relative px-6 py-4">
-          <button onClick={() => props.setShowCreateBug(true)} className="btn-sidebar btn-menu">
+          <button onClick={() => dispatch(switchCreateBugModal())} className="btn-sidebar btn-menu">
             <RiAddCircleLine size={40} />
             <span>Create Bug</span>
           </button>

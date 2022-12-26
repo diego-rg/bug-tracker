@@ -4,6 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import bugsSlice from "../features/bugs/bugsSlice";
 import themeSlice from "../features/theme/themeSlice";
 import filtersSlice from "../features/filters/filtersSlice";
+import modalSlice from "../features/modals/modalSlice";
 import { authApi } from "../features/auth/authApi";
 import { bugsApi } from "../features/bugs/bugsApi";
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     theme: themeSlice,
     bugs: bugsSlice,
     filters: filtersSlice,
+    modals: modalSlice,
     [authApi.reducerPath]: authApi.reducer,
     [bugsApi.reducerPath]: bugsApi.reducer,
   },
