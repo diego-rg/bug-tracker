@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useGetAllBugsQuery } from "../features/bugs/bugsApi";
 import { selectBug } from "../features/bugs/bugsSlice";
 import { switchDetailsBugModal } from "../features/modals/modalSlice";
+import { switchDeleteBugModal } from "../features/modals/modalSlice";
 import UpdateBug from "./UpdateBug";
-import DeleteBug from "./DeleteBug";
 import FilterOptions from "./FilterOptions";
 import Loader from "./Loader";
 
@@ -19,7 +19,6 @@ const BugCards = () => {
   const { data: bugs, error: bugsError, isLoading: isLoadingBugs } = useGetAllBugsQuery();
 
   const [showUpdateBug, setShowUpdateBug] = useState(false);
-  const [showDeleteBug, setShowDeleteBug] = useState(false);
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -34,11 +33,11 @@ const BugCards = () => {
   };
 
   useEffect(() => {
-    (showUpdateBug || showDeleteBug) && scrollbarVisible()
+    showUpdateBug && scrollbarVisible()
       ? document.getElementById("app-container").classList.add("mr-4")
       : document.getElementById("app-container").classList.remove("mr-4");
 
-    showUpdateBug || showDeleteBug
+    showUpdateBug
       ? document.querySelector("body").classList.add("overflow-hidden")
       : document.querySelector("body").classList.remove("overflow-hidden");
   });
@@ -64,7 +63,7 @@ const BugCards = () => {
 
   //Show delete modal
   const openDeleteBug = (bug) => {
-    setShowDeleteBug(true);
+    dispatch(switchDeleteBugModal());
     dispatch(selectBug(bug));
   };
 
@@ -122,8 +121,6 @@ const BugCards = () => {
               })}
           </>
         ) : null}
-
-        {showDeleteBug && <DeleteBug show={showDeleteBug} setShow={setShowDeleteBug} />}
 
         {showUpdateBug && <UpdateBug show={showUpdateBug} setShow={setShowUpdateBug} formValues={formValues} />}
       </div>

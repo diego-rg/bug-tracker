@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { AiOutlineClose } from "react-icons/ai";
 
+import { switchDeleteBugModal } from "../features/modals/modalSlice";
 import bugsAPI from "../apis/bugs";
 
 const DeleteBug = (props) => {
+  const dispatch = useDispatch();
   const selectedBug = useSelector((state) => state.bugs.selectedBug);
 
   const [errorMessage, setErrorMessage] = useState();
 
   const deleteBug = async (bugId) => {
     try {
-      const deleteBugResponse = await bugsAPI.delete(`/bugs/${bugId}`);
+      const deleteBugResponse = await bugsAPI.delete(`/bugs/${selectedBug._id}`);
       if (deleteBugResponse.status === 200) {
-        props.setShow(false);
+        dispatch(switchDeleteBugModal());
         //actualizar bugs
       }
     } catch (error) {
@@ -27,7 +29,7 @@ const DeleteBug = (props) => {
       <div className="modal-content">
         <div className="modal-header">
           <h3 className="modal-title">Warning</h3>
-          <button onClick={() => props.setShow(false)} type="button" className="btn-menu">
+          <button onClick={() => dispatch(switchDeleteBugModal())} type="button" className="btn-menu">
             <AiOutlineClose size={24} />
             <span className="sr-only">Close modal</span>
           </button>
@@ -38,7 +40,7 @@ const DeleteBug = (props) => {
 
           {props.errorMessage && <p className="error-message">{errorMessage}</p>}
 
-          <button onClick={() => props.setShow(false)} type="button" className="btn-primary">
+          <button onClick={() => dispatch(switchDeleteBugModal())} type="button" className="btn-primary">
             No, go back
           </button>
           <button onClick={() => deleteBug(selectedBug._id)} type="button" className="btn-danger">
