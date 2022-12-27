@@ -4,21 +4,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { switchDeleteBugModal } from "../features/modals/modalSlice";
-import bugsAPI from "../apis/bugs";
+import { useDeleteBugMutation } from "../features/bugs/bugsApi";
 
 const DeleteBug = (props) => {
   const dispatch = useDispatch();
+  const [deleteBug] = useDeleteBugMutation();
   const selectedBug = useSelector((state) => state.bugs.selectedBug);
 
   const [errorMessage, setErrorMessage] = useState();
 
-  const deleteBug = async () => {
+  const destroyBug = async () => {
     try {
-      const deleteBugResponse = await bugsAPI.delete(`/bugs/${selectedBug._id}`);
-      if (deleteBugResponse.status === 200) {
-        dispatch(switchDeleteBugModal());
-        //actualizar bugs
-      }
+      await deleteBug(selectedBug._id);
+      dispatch(switchDeleteBugModal());
     } catch (error) {
       setErrorMessage("Error: bug removal failed.");
     }
@@ -43,7 +41,7 @@ const DeleteBug = (props) => {
           <button onClick={() => dispatch(switchDeleteBugModal())} type="button" className="btn-primary">
             No, go back
           </button>
-          <button onClick={() => deleteBug(selectedBug._id)} type="button" className="btn-danger">
+          <button onClick={destroyBug} type="button" className="btn-danger">
             Yes, delete it
           </button>
         </div>

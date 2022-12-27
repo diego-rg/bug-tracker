@@ -31,7 +31,21 @@ export const bugsApi = createApi({
       }),
       invalidatesTags: ["Bug"],
     }),
+    deleteBug: builder.mutation({
+      query: (bugId) => ({
+        url: `/bugs/${bugId}`,
+        method: "DELETE",
+        body: bugId,
+      }),
+      invalidatesTags: ["Bug"],
+    }),
   }),
 });
 
-export const { useGetAllBugsQuery, useGetBugByIdQuery, usePostNewBugMutation, useEditBugMutation } = bugsApi;
+export const {
+  useGetAllBugsQuery,
+  useGetBugByIdQuery,
+  usePostNewBugMutation,
+  useEditBugMutation,
+  useDeleteBugMutation,
+} = bugsApi;
