@@ -6,9 +6,11 @@ import Nabvar from "./Navbar";
 import MobileSidebar from "./MobileSidebar";
 import BugCards from "./BugCards";
 import CreateBug from "./CreateBug";
+import BugDetails from "./BugDetails";
 
 const MainPage = () => {
   const showCreateBugModal = useSelector((state) => state.modals.isOpenCreate);
+  const showDetailsBugModal = useSelector((state) => state.modals.isOpenDetails);
   const [openMenu, setOpenMenu] = useState(false);
 
   //Hide scroll on modal open
@@ -17,11 +19,11 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    showCreateBugModal && scrollbarVisible()
+    (showCreateBugModal || showDetailsBugModal) && scrollbarVisible()
       ? document.getElementById("app-container").classList.add("mr-4")
       : document.getElementById("app-container").classList.remove("mr-4");
 
-    showCreateBugModal
+    showCreateBugModal || showDetailsBugModal
       ? document.querySelector("body").classList.add("overflow-hidden")
       : document.querySelector("body").classList.remove("overflow-hidden");
   });
@@ -29,6 +31,8 @@ const MainPage = () => {
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       {showCreateBugModal && <CreateBug />}
+
+      {showDetailsBugModal && <BugDetails />}
 
       <DesktopSidebar />
 

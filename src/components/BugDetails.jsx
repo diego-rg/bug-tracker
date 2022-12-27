@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
+import { switchDetailsBugModal } from "../features/modals/modalSlice";
 import timeDateConversor from "../scripts/timeDateConversor";
 
-const BugDetails = (props) => {
+const BugDetails = () => {
+  const dispatch = useDispatch();
   const selectedBug = useSelector((state) => state.bugs.selectedBug);
 
   return (
@@ -11,7 +14,7 @@ const BugDetails = (props) => {
       <div className="modal-content">
         <div className="modal-header">
           <h3 className="modal-title">{selectedBug.name}</h3>
-          <button onClick={() => props.setShow(false)} type="button" className="btn-menu">
+          <button onClick={() => dispatch(switchDetailsBugModal())} type="button" className="btn-menu">
             <AiOutlineClose size={24} />
             <span className="sr-only">Close modal</span>
           </button>
