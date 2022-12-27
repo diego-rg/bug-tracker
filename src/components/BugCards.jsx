@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useGetAllBugsQuery } from "../features/bugs/bugsApi";
 import { selectBug } from "../features/bugs/bugsSlice";
 import { switchDetailsBugModal } from "../features/modals/modalSlice";
 import { switchDeleteBugModal } from "../features/modals/modalSlice";
-import UpdateBug from "./UpdateBug";
+import { switchUpdateBugModal } from "../features/modals/modalSlice";
 import FilterOptions from "./FilterOptions";
 import Loader from "./Loader";
 
@@ -18,50 +18,19 @@ const BugCards = () => {
 
   const { data: bugs, error: bugsError, isLoading: isLoadingBugs } = useGetAllBugsQuery();
 
-  const [showUpdateBug, setShowUpdateBug] = useState(false);
-  const [formValues, setFormValues] = useState({
-    name: "",
-    description: "",
-    status: "",
-    priority: "",
-    severity: "",
-  });
-
-  //Hide scroll on modal open
-  const scrollbarVisible = () => {
-    return document.body.clientHeight > window.innerHeight;
-  };
-
-  useEffect(() => {
-    showUpdateBug && scrollbarVisible()
-      ? document.getElementById("app-container").classList.add("mr-4")
-      : document.getElementById("app-container").classList.remove("mr-4");
-
-    showUpdateBug
-      ? document.querySelector("body").classList.add("overflow-hidden")
-      : document.querySelector("body").classList.remove("overflow-hidden");
-  });
-
-  //Show details modal
+  //Select bug and show details modal
   const openBugDetails = (bug) => {
     dispatch(switchDetailsBugModal());
     dispatch(selectBug(bug));
   };
 
-  //Show update modal
+  //Select bug and show update modal
   const openUpdateBug = (bug) => {
-    setFormValues({
-      name: bug.name,
-      description: bug.description,
-      status: bug.status,
-      priority: bug.priority,
-      severity: bug.severity,
-    });
-    setShowUpdateBug(true);
+    dispatch(switchUpdateBugModal());
     dispatch(selectBug(bug));
   };
 
-  //Show delete modal
+  //Select bug and show delete modal
   const openDeleteBug = (bug) => {
     dispatch(switchDeleteBugModal());
     dispatch(selectBug(bug));
@@ -107,10 +76,10 @@ const BugCards = () => {
                       <li>Severity: {bug.severity}</li>
                     </ul>
 
-                    <button onClick={() => openBugDetails(bug)} className="btn-primary ">
+                    <button onClick={() => openBugDetails(bug)} className="btn-primary">
                       Details
                     </button>
-                    <button onClick={() => openUpdateBug(bug)} className="btn-primary ">
+                    <button onClick={() => openUpdateBug(bug)} className="btn-primary">
                       Edit
                     </button>
                     <button onClick={() => openDeleteBug(bug)} className="btn-danger">
@@ -121,8 +90,6 @@ const BugCards = () => {
               })}
           </>
         ) : null}
-
-        {showUpdateBug && <UpdateBug show={showUpdateBug} setShow={setShowUpdateBug} formValues={formValues} />}
       </div>
     </main>
   );

@@ -12,7 +12,7 @@ const DeleteBug = (props) => {
 
   const [errorMessage, setErrorMessage] = useState();
 
-  const deleteBug = async (bugId) => {
+  const deleteBug = async () => {
     try {
       const deleteBugResponse = await bugsAPI.delete(`/bugs/${selectedBug._id}`);
       if (deleteBugResponse.status === 200) {

@@ -14,7 +14,7 @@ const BugForm = (props) => {
       <div className="modal-content">
         <div className="modal-header">
           <h3 className="modal-title">Fill the bug data</h3>
-          <button onClick={() => dispatch(props.reducer)} type="button" className="btn-menu">
+          <button onClick={() => dispatch(props.reducer())} type="button" className="btn-menu">
             <AiOutlineClose size={24} />
             <span className="sr-only">Close modal</span>
           </button>
@@ -87,7 +87,7 @@ const BugForm = (props) => {
               <button type="submit" className="btn-primary">
                 Save bug
               </button>
-              <button onClick={() => dispatch(props.reducer)} type="button" className="btn-danger">
+              <button onClick={() => dispatch(props.reducer())} type="button" className="btn-danger">
                 Close
               </button>
             </div>

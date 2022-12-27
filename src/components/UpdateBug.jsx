@@ -1,19 +1,38 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
+import { switchUpdateBugModal } from "../features/modals/modalSlice";
 
-const UpdateBug = (props) => {
+const UpdateBug = () => {
+  const dispatch = useDispatch();
   const selectedBug = useSelector((state) => state.bugs.selectedBug);
   const [errorMessage, setErrorMessage] = useState();
+  const [formValues, setFormValues] = useState({
+    name: "",
+    description: "",
+    status: "",
+    priority: "",
+    severity: "",
+  });
+
+  useEffect(() => {
+    setFormValues({
+      name: selectedBug.name,
+      description: selectedBug.description,
+      status: selectedBug.status,
+      priority: selectedBug.priority,
+      severity: selectedBug.severity,
+    });
+  }, [selectedBug]);
 
   const updateBug = async (bugData) => {
     try {
       const updateBugResponse = await bugsAPI.put(`/bugs/${selectedBug._id}`, bugData);
       if (updateBugResponse.status === 200) {
         console.log(updateBugResponse.data.message);
-        props.setShow(false);
+        dispatch(switchUpdateBugModal());
         //update bugs
       }
     } catch (error) {
@@ -28,11 +47,10 @@ const UpdateBug = (props) => {
   return (
     <BugForm
       errorMessage={errorMessage}
-      initialValues={props.formValues}
-      show={props.show}
-      setShow={props.setShow}
+      initialValues={formValues}
       onSubmit={updateBug}
       enableReinitialize
+      reducer={switchUpdateBugModal}
     />
   );
 };

@@ -39,7 +39,7 @@ const CreateBug = () => {
       errorMessage={errorMessage}
       initialValues={formValues}
       onSubmit={submitBug}
-      reducer={switchCreateBugModal()}
+      reducer={switchCreateBugModal}
     />
   );
 };
