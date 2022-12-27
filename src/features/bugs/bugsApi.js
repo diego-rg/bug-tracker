@@ -16,14 +16,22 @@ export const bugsApi = createApi({
       query: (bugId) => `/bugs/${bugId}`,
     }),
     postNewBug: builder.mutation({
-      query: (initialBug) => ({
+      query: (bug) => ({
         url: "bugs",
         method: "POST",
-        body: initialBug,
+        body: bug,
+      }),
+      invalidatesTags: ["Bug"],
+    }),
+    editBug: builder.mutation({
+      query: (bug) => ({
+        url: `/bugs/${bug.id}`,
+        method: "PUT",
+        body: bug,
       }),
       invalidatesTags: ["Bug"],
     }),
   }),
 });
 
-export const { useGetAllBugsQuery, useGetBugByIdQuery, usePostNewBugMutation } = bugsApi;
+export const { useGetAllBugsQuery, useGetBugByIdQuery, usePostNewBugMutation, useEditBugMutation } = bugsApi;

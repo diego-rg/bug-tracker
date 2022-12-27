@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import bugsAPI from "../apis/bugs";
 import BugForm from "./BugForm";
 import { switchUpdateBugModal } from "../features/modals/modalSlice";
+import { useEditBugMutation } from "../features/bugs/bugsApi";
 
 const UpdateBug = () => {
   const dispatch = useDispatch();
   const selectedBug = useSelector((state) => state.bugs.selectedBug);
+  const [editBug] = useEditBugMutation();
+
   const [errorMessage, setErrorMessage] = useState();
   const [formValues, setFormValues] = useState({
     name: "",
@@ -29,18 +31,10 @@ const UpdateBug = () => {
 
   const updateBug = async (bugData) => {
     try {
-      const updateBugResponse = await bugsAPI.put(`/bugs/${selectedBug._id}`, bugData);
-      if (updateBugResponse.status === 200) {
-        console.log(updateBugResponse.data.message);
-        dispatch(switchUpdateBugModal());
-        //update bugs
-      }
+      await editBug({ id: selectedBug._id, ...bugData }).unwrap();
+      dispatch(switchUpdateBugModal());
     } catch (error) {
-      if (error.response.data.message === "Bug validation failed: name: A bug with that name already exists") {
-        setErrorMessage("Error: a bug with that name already exists.");
-      } else {
-        setErrorMessage("Error: bug data update failed.");
-      }
+      setErrorMessage(error.data.message);
     }
   };
 
