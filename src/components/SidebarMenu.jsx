@@ -6,7 +6,7 @@ import { VscDebug } from "react-icons/vsc";
 
 import { switchCreateBugModal } from "../features/modals/modalSlice";
 
-const SidebarMenu = (props) => {
+const SidebarMenu = () => {
   const dispatch = useDispatch();
 
   return (
