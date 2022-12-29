@@ -4,14 +4,17 @@ export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8000/api/",
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+        return headers;
+      }
+    },
   }),
   endpoints: (builder) => ({
     getCurrentUser: builder.query({
       query: () => "users/current",
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
     }),
   }),
 });

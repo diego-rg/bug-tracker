@@ -5,7 +5,7 @@ import bugsSlice from "../features/bugs/bugsSlice";
 import themeSlice from "../features/theme/themeSlice";
 import filtersSlice from "../features/filters/filtersSlice";
 import modalSlice from "../features/modals/modalSlice";
-import authSlice from "../features/auth/auth.slice";
+import authSlice from "../features/auth/authSlice";
 import { authApi } from "../features/auth/authApi";
 import { bugsApi } from "../features/bugs/bugsApi";
 

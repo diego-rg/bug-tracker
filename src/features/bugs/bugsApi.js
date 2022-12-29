@@ -5,6 +5,13 @@ export const bugsApi = createApi({
   reducerPath: "bugsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8000/api/",
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+        return headers;
+      }
+    },
   }),
   tagTypes: ["Bug"],
   endpoints: (builder) => ({

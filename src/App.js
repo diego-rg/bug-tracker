@@ -3,30 +3,20 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import getCookie from "./scripts/getCookie";
-import { getToken } from "./features/auth/auth.slice";
+import { getToken } from "./features/auth/authSlice";
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
-// import Loader from "./components/Loader";
-// import { useGetCurrentUserQuery } from "./features/auth/authApi";
+import Loader from "./components/Loader";
+import { useGetCurrentUserQuery } from "./features/auth/authApi";
 
 function App() {
   const dispatch = useDispatch();
-  //state + reducerName(store) + stateName(slice)
   const darkMode = useSelector((state) => state.theme.darkMode);
 
-  const token = useSelector((state) => state.auth.token);
-  console.log(token);
-  // const {
-  //   data: currentUser,
-  //   error: currentUserError,
-  //   isLoading: isLoadingCurrentUser,
-  // } = useGetCurrentUserQuery();
+  const { data: currentUser, error: currentUserError, isLoading: isLoadingCurrentUser } = useGetCurrentUserQuery();
 
-  useEffect(() => {
-    const tokenCookie = getCookie("token");
-    dispatch(getToken(tokenCookie));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const tokenCookie = getCookie("token");
+  dispatch(getToken(tokenCookie));
 
   // Theme
   useEffect(() => {
@@ -43,13 +33,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<MainPage />} />
       </Routes>
-      {/* {currentUserError ? (
+      {currentUserError ? (
         <p>ERROR</p>
       ) : isLoadingCurrentUser ? (
         <Loader />
       ) : currentUser ? (
-        <>{currentUser}</>
-      ) : null} */}
+        <>{currentUser.name}</>
+      ) : null}
     </div>
   );
 }
