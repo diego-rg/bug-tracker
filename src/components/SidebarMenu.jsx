@@ -6,6 +6,7 @@ import { VscDebug } from "react-icons/vsc";
 
 import deleteCookie from "../scripts/deleteCookie";
 import { switchCreateBugModal } from "../features/modals/modalSlice";
+import { useGetCurrentUserQuery } from "../features/auth/authApi";
 
 const logOutUser = (cookieName) => {
   deleteCookie(cookieName);
@@ -14,6 +15,7 @@ const logOutUser = (cookieName) => {
 
 const SidebarMenu = () => {
   const dispatch = useDispatch();
+  const { data: currentUser, error: currentUserError, isLoading: isLoadingCurrentUser } = useGetCurrentUserQuery();
 
   return (
     <div className="py-4 text-gray-500 dark:text-gray-400">
@@ -23,6 +25,14 @@ const SidebarMenu = () => {
         </span>
         <span className="mr-3 ml-1">Bug Tracker</span>
       </a>
+
+      {currentUserError ? (
+        <p className="mt-4 text-center">Error</p>
+      ) : isLoadingCurrentUser ? (
+        <p className="mt-4 text-center">Loading...</p>
+      ) : currentUser ? (
+        <p className="mt-4 text-center">{currentUser}</p>
+      ) : null}
 
       <ul className="mt-6">
         <li className="relative px-6 py-4">

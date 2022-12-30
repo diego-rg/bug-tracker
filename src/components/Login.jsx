@@ -4,9 +4,13 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscDebug } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
 
+import deleteCookie from "../scripts/deleteCookie";
 import { toggleTheme } from "../features/theme/themeSlice";
 
-const googleLogin = "http://localhost:8000/api/oauth/google";
+const googleLogin = (cookieName) => {
+  deleteCookie(cookieName);
+  window.open("http://localhost:8000/api/oauth/google", "_self");
+};
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -33,10 +37,10 @@ const Login = () => {
             <span className="mr-2 ml-3">Bug Tracker</span>
           </div>
 
-          <a className="btn-signIn cursor-pointer" href={googleLogin}>
+          <button className="btn-signIn cursor-pointer" onClick={() => googleLogin("token")}>
             <FcGoogle size={20} />
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
-          </a>
+          </button>
 
           <a className="btn-signIn cursor-pointer" href="/login">
             <FaGithub size={20} />

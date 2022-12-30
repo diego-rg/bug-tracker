@@ -4,19 +4,17 @@ import { useSelector, useDispatch } from "react-redux";
 
 import getCookie from "./scripts/getCookie";
 import { getToken } from "./features/auth/authSlice";
+import ProtectedRoute from "./components/ProtectedRoute";
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
-import Loader from "./components/Loader";
-import { useGetCurrentUserQuery } from "./features/auth/authApi";
 
 function App() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+  const token = useSelector((state) => state.auth.token);
 
-  const { data: currentUser, error: currentUserError, isLoading: isLoadingCurrentUser } = useGetCurrentUserQuery();
-
-  const tokenCookie = getCookie("token");
-  dispatch(getToken(tokenCookie));
+  dispatch(getToken(getCookie("token")));
+  console.log(token);
 
   // Theme
   useEffect(() => {
@@ -31,15 +29,10 @@ function App() {
     <div id="app-container">
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<MainPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="*" element={<MainPage />} />
+        </Route>
       </Routes>
-      {currentUserError ? (
-        <p>ERROR</p>
-      ) : isLoadingCurrentUser ? (
-        <Loader />
-      ) : currentUser ? (
-        <>{currentUser.name}</>
-      ) : null}
     </div>
   );
 }
