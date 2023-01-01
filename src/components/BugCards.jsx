@@ -42,7 +42,7 @@ const BugCards = () => {
 
       <div className="flex flex-wrap justify-evenly p-2">
         {bugsError ? (
-          <p>ERROR</p>
+          <p className="mt-4 text-center text-gray-900 dark:text-white">Error</p>
         ) : isLoadingBugs ? (
           <Loader />
         ) : bugs ? (

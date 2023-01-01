@@ -11,10 +11,8 @@ import Login from "./components/Login";
 function App() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
-  const token = useSelector((state) => state.auth.token);
 
   dispatch(getToken(getCookie("token")));
-  console.log(token);
 
   // Theme
   useEffect(() => {

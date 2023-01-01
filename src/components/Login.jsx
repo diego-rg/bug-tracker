@@ -9,7 +9,7 @@ import { toggleTheme } from "../features/theme/themeSlice";
 
 const googleLogin = (cookieName) => {
   deleteCookie(cookieName);
-  window.open("http://localhost:8000/api/oauth/google", "_self");
+  window.open("http://localhost:8000/api/auth/google", "_self");
 };
 
 const Login = () => {

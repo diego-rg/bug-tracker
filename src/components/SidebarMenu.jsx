@@ -27,11 +27,11 @@ const SidebarMenu = () => {
       </a>
 
       {currentUserError ? (
-        <p className="mt-4 text-center">Error</p>
+        <p className="mt-4 text-center text-gray-900 dark:text-white">Error</p>
       ) : isLoadingCurrentUser ? (
-        <p className="mt-4 text-center">Loading...</p>
+        <p className="mt-4 text-center text-gray-900 dark:text-white">Loading...</p>
       ) : currentUser ? (
-        <p className="mt-4 text-center">{currentUser}</p>
+        <p className="mt-4 text-center text-gray-900 dark:text-white">{currentUser}</p>
       ) : null}
 
       <ul className="mt-6">
