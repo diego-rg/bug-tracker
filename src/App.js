@@ -27,9 +27,9 @@ function App() {
     <div id="app-container">
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="*" element={<MainPage />} />
-        </Route>
+        {/* <Route element={<ProtectedRoute />}> */}
+        <Route path="*" element={<MainPage />} />
+        {/* </Route> */}
       </Routes>
     </div>
   );
