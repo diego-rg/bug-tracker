@@ -20,7 +20,7 @@ export const bugsApi = createApi({
       providesTags: ["Bug"],
     }),
     getBugById: builder.query({
-      query: (bugId) => `/bugs/${bugId}`,
+      query: (bugId) => `bugs/${bugId}`,
     }),
     postNewBug: builder.mutation({
       query: (bug) => ({
@@ -32,7 +32,7 @@ export const bugsApi = createApi({
     }),
     editBug: builder.mutation({
       query: (bug) => ({
-        url: `/bugs/${bug.id}`,
+        url: `bugs/${bug.id}`,
         method: "PUT",
         body: bug,
       }),
@@ -40,7 +40,7 @@ export const bugsApi = createApi({
     }),
     deleteBug: builder.mutation({
       query: (bugId) => ({
-        url: `/bugs/${bugId}`,
+        url: `bugs/${bugId}`,
         method: "DELETE",
         body: bugId,
       }),
