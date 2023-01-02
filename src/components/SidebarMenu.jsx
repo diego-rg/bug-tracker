@@ -10,7 +10,7 @@ import { useGetCurrentUserQuery } from "../features/auth/authApi";
 
 const logOutUser = (cookieName) => {
   deleteCookie(cookieName);
-  window.open("https://api-bugtracker.onrender.com/api/users/logout", "_self");
+  window.open("http://localhost:8000/api/users/logout", "_self");
 };
 
 const SidebarMenu = () => {

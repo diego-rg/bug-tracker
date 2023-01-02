@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api-bugtracker.onrender.com/api/",
+    baseUrl: "http://localhost:8000/api",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
@@ -14,7 +14,7 @@ export const authApi = createApi({
   }),
   endpoints: (builder) => ({
     getCurrentUser: builder.query({
-      query: () => "users/current",
+      query: () => "/users/current",
     }),
   }),
 });

@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const bugsApi = createApi({
   reducerPath: "bugsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api-bugtracker.onrender.com/api/",
+    baseUrl: "http://localhost:8000/api",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
@@ -16,7 +16,7 @@ export const bugsApi = createApi({
   tagTypes: ["Bug"],
   endpoints: (builder) => ({
     getAllBugs: builder.query({
-      query: () => "bugs",
+      query: () => "/bugs",
       providesTags: ["Bug"],
     }),
     getBugById: builder.query({
@@ -24,7 +24,7 @@ export const bugsApi = createApi({
     }),
     postNewBug: builder.mutation({
       query: (bug) => ({
-        url: "bugs",
+        url: "/bugs",
         method: "POST",
         body: bug,
       }),
@@ -32,7 +32,7 @@ export const bugsApi = createApi({
     }),
     editBug: builder.mutation({
       query: (bug) => ({
-        url: `bugs/${bug.id}`,
+        url: `/bugs/${bug.id}`,
         method: "PUT",
         body: bug,
       }),
@@ -40,7 +40,7 @@ export const bugsApi = createApi({
     }),
     deleteBug: builder.mutation({
       query: (bugId) => ({
-        url: `bugs/${bugId}`,
+        url: `/bugs/${bugId}`,
         method: "DELETE",
         body: bugId,
       }),
