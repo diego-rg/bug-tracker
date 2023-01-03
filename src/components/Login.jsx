@@ -1,6 +1,5 @@
 import { CgMoon, CgSun } from "react-icons/cg";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaTwitter, FaUserCircle, FaGoogle } from "react-icons/fa";
 import { VscDebug } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -32,12 +31,12 @@ const Login = () => {
           </div>
 
           <a className="btn-signIn cursor-pointer" href="http://localhost:8000/api/users/guest">
-            <FcGoogle size={20} />
-            <span className="pl-2 text-md font-bold">Sign in as Guest</span>
+            <FaUserCircle size={20} />
+            <span className="pl-2 text-md font-bold">Continue as Guest</span>
           </a>
 
           <a className="btn-signIn cursor-pointer" href="http://localhost:8000/api/auth/google">
-            <FcGoogle size={20} />
+            <FaGoogle size={20} />
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
           </a>
 
