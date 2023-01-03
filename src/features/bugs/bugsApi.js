@@ -6,12 +6,11 @@ export const bugsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8000/api",
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-        return headers;
-      }
+      headers.set("Access-Control-Allow-Origin", "http://localhost:3000");
+      return headers;
     },
+    credentials: "include",
+    mode: "cors",
   }),
   tagTypes: ["Bug"],
   endpoints: (builder) => ({

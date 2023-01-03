@@ -4,14 +4,8 @@ import { RiAddCircleLine, RiBookOpenLine, RiQuestionLine, RiLogoutBoxLine } from
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { VscDebug } from "react-icons/vsc";
 
-import deleteCookie from "../scripts/deleteCookie";
 import { switchCreateBugModal } from "../features/modals/modalSlice";
 import { useGetCurrentUserQuery } from "../features/auth/authApi";
-
-const logOutUser = (cookieName) => {
-  deleteCookie(cookieName);
-  window.open("http://localhost:8000/api/users/logout", "_self");
-};
 
 const SidebarMenu = () => {
   const dispatch = useDispatch();
@@ -63,10 +57,10 @@ const SidebarMenu = () => {
         </li>
 
         <li className="relative px-6 py-4">
-          <button className="btn-sidebar btn-menu opacity-30" onClick={() => logOutUser("token")}>
+          <a className="btn-sidebar btn-menu opacity-30" href="http://localhost:8000/api/users/logout">
             <RiLogoutBoxLine size={40} />
             <span>Log out</span>
-          </button>
+          </a>
         </li>
       </ul>
     </div>

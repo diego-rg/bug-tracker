@@ -4,24 +4,11 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 import { VscDebug } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
 
-import deleteCookie from "../scripts/deleteCookie";
 import { toggleTheme } from "../features/theme/themeSlice";
-import { useLazyGetTokenQuery } from "../features/auth/authApi";
-
-const googleLogin = (cookieName) => {
-  deleteCookie(cookieName);
-  window.open("http://localhost:8000/api/auth/google", "_self");
-};
 
 const Login = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
-
-  // const guestLogin = () => {
-  //   getToken();
-  // };
-
-  // const [getToken] = useLazyGetTokenQuery();
 
   return (
     <div className="flex justify-center items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -49,10 +36,10 @@ const Login = () => {
             <span className="pl-2 text-md font-bold">Sign in as Guest</span>
           </a>
 
-          <button className="btn-signIn cursor-pointer" onClick={() => googleLogin("token")}>
+          <a className="btn-signIn cursor-pointer" href="http://localhost:8000/api/auth/google">
             <FcGoogle size={20} />
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
-          </button>
+          </a>
 
           <a className="btn-signIn cursor-pointer" href="/login">
             <FaGithub size={20} />

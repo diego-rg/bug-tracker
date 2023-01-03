@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { useLazyGetTokenQuery } from "./features/auth/authApi";
-import getCookie from "./scripts/getCookie";
-import { setToken } from "./features/auth/authSlice";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
 
 function App() {
-  const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
 
   // Theme

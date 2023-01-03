@@ -5,7 +5,6 @@ import bugsSlice from "../features/bugs/bugsSlice";
 import themeSlice from "../features/theme/themeSlice";
 import filtersSlice from "../features/filters/filtersSlice";
 import modalSlice from "../features/modals/modalSlice";
-import authSlice from "../features/auth/authSlice";
 import { authApi } from "../features/auth/authApi";
 import { bugsApi } from "../features/bugs/bugsApi";
 
@@ -15,7 +14,6 @@ export const store = configureStore({
     bugs: bugsSlice,
     filters: filtersSlice,
     modals: modalSlice,
-    auth: authSlice,
     [authApi.reducerPath]: authApi.reducer,
     [bugsApi.reducerPath]: bugsApi.reducer,
   },
