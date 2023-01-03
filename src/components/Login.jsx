@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import deleteCookie from "../scripts/deleteCookie";
 import { toggleTheme } from "../features/theme/themeSlice";
+import { useLazyGetTokenQuery } from "../features/auth/authApi";
 
 const googleLogin = (cookieName) => {
   deleteCookie(cookieName);
@@ -15,6 +16,12 @@ const googleLogin = (cookieName) => {
 const Login = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+
+  // const guestLogin = () => {
+  //   getToken();
+  // };
+
+  // const [getToken] = useLazyGetTokenQuery();
 
   return (
     <div className="flex justify-center items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -36,6 +43,11 @@ const Login = () => {
             </span>
             <span className="mr-2 ml-3">Bug Tracker</span>
           </div>
+
+          <a className="btn-signIn cursor-pointer" href="http://localhost:8000/api/users/guest">
+            <FcGoogle size={20} />
+            <span className="pl-2 text-md font-bold">Sign in as Guest</span>
+          </a>
 
           <button className="btn-signIn cursor-pointer" onClick={() => googleLogin("token")}>
             <FcGoogle size={20} />

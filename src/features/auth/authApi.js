@@ -5,19 +5,21 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8000/api",
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-        return headers;
-      }
+      headers.set("Access-Control-Allow-Origin", "http://localhost:3000");
+      return headers;
     },
+    credentials: "include",
+    mode: "cors",
   }),
   endpoints: (builder) => ({
     getCurrentUser: builder.query({
       query: () => "/users/current",
     }),
+    getToken: builder.query({
+      query: () => "/users/guest",
+    }),
   }),
 });
 
 // RECORDAR: use + ... + Query
-export const { useGetCurrentUserQuery } = authApi;
+export const { useGetCurrentUserQuery, useLazyGetTokenQuery } = authApi;

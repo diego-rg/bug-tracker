@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import { useLazyGetTokenQuery } from "./features/auth/authApi";
 import getCookie from "./scripts/getCookie";
-import { getToken } from "./features/auth/authSlice";
+import { setToken } from "./features/auth/authSlice";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
@@ -11,8 +12,6 @@ import Login from "./components/Login";
 function App() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
-
-  dispatch(getToken(getCookie("token")));
 
   // Theme
   useEffect(() => {
