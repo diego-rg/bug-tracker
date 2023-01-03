@@ -4,9 +4,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const bugsApi = createApi({
   reducerPath: "bugsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api",
+    baseUrl: process.env.REACT_APP_API_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
-      headers.set("Access-Control-Allow-Origin", "http://localhost:3000");
+      headers.set("Access-Control-Allow-Origin", process.env.REACT_APP_SPA_BASE_URL);
       return headers;
     },
     credentials: "include",

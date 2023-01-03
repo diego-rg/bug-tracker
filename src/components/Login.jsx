@@ -30,12 +30,12 @@ const Login = () => {
             <span className="mr-2 ml-3">Bug Tracker</span>
           </div>
 
-          <a className="btn-signIn cursor-pointer" href="http://localhost:8000/api/users/guest">
+          <a className="btn-signIn cursor-pointer" href={process.env.REACT_APP_LOGIN_GUEST}>
             <FaUserCircle size={20} />
             <span className="pl-2 text-md font-bold">Continue as Guest</span>
           </a>
 
-          <a className="btn-signIn cursor-pointer" href="http://localhost:8000/api/auth/google">
+          <a className="btn-signIn cursor-pointer" href={process.env.REACT_APP_LOGIN_GOOGLE}>
             <FaGoogle size={20} />
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
           </a>
