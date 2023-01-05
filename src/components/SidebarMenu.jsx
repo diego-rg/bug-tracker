@@ -57,7 +57,7 @@ const SidebarMenu = () => {
         </li>
 
         <li className="relative px-6 py-4">
-          <a className="btn-sidebar btn-menu opacity-30" href={process.env.REACT_APP_LOGOUT}>
+          <a className="btn-sidebar btn-menu" href={process.env.REACT_APP_LOGOUT}>
             <RiLogoutBoxLine size={40} />
             <span>Log out</span>
           </a>

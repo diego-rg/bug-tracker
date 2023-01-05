@@ -1,5 +1,11 @@
 # Bug Tracker: list of versions and changes
 
+## v0.2.0
+
+    1. Authorization and authentication using OAuth/OpenID providers (Google), JWT and Cookies (HTTPOnly, Secure)
+    2. Login page and protected routes
+    3. State and queries refactored using Redux Toolkit
+
 ## v0.1.0
 
     1. Basic UI
