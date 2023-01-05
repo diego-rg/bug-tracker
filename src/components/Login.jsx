@@ -32,21 +32,21 @@ const Login = () => {
           </div>
 
           <a className="btn-signIn cursor-pointer" href={process.env.REACT_APP_LOGIN_GUEST}>
-            <span className="text-gray-800 dark:text-gray-200">
+            <span className="text-gray-700 dark:text-gray-200">
               <FaUserCircle size={20} />
             </span>
             <span className="pl-2 text-md font-bold">Continue as Guest</span>
           </a>
 
           <a className="btn-signIn cursor-pointer" href={process.env.REACT_APP_LOGIN_GOOGLE}>
-            <span className="text-purple-700 dark:text-purple-500">
+            <span className="text-gray-700 dark:text-gray-200">
               <FcGoogle size={20} />
             </span>
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
           </a>
 
           <a className="btn-signIn cursor-pointer" href="/login">
-            <span className="text-gray-800 dark:text-gray-200">
+            <span className="text-gray-700 dark:text-gray-200">
               <FaGithub size={20} />
             </span>
             <span className="pl-2 text-md font-bold">Sign in with GitHub</span>
