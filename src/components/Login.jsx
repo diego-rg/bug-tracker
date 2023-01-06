@@ -45,7 +45,7 @@ const Login = () => {
             <span className="pl-2 text-md font-bold">Sign in with Google</span>
           </a>
 
-          <a className="btn-signIn cursor-pointer" href="/login">
+          <a className="btn-signIn cursor-pointer" href={process.env.REACT_APP_LOGIN_GITHUB}>
             <span className="text-gray-700 dark:text-gray-200">
               <FaGithub size={20} />
             </span>
