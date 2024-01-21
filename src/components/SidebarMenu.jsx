@@ -30,7 +30,7 @@ const SidebarMenu = () => {
 
       <ul className="mt-6">
         <li className="relative px-6 py-4">
-          <button className="btn-sidebar btn-menu opacity-30">
+          <button className="btn-sidebar btn-menu disabled-item">
             <MdOutlineCreateNewFolder size={40} />
             <span>Create Project</span>
           </button>

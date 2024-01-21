@@ -23,17 +23,22 @@ const Login = () => {
               {darkMode ? <CgSun size={27} /> : <CgMoon size={27} />}
             </button>
           </div>
-          <div className="flex justify-between items-center mb-2">
-            <p className="text-lg font-bold text-red-500 dark:text-red-600">*Important:</p>
-          </div><div className="flex justify-between items-center mb-8">
-            <p className="text-lg font-semibold text-gray-700 dark:text-gray-200 max-w-sm">You must allow third-party cookies to use this website or you will not be able to log in. This issue will be fixed in future versions.</p>
-          </div>
 
-          <div className="flex justify-center items-center text-2xl font-bold text-gray-800 dark:text-gray-200 py-8">
+
+          <div className="flex justify-center items-center text-2xl font-bold text-gray-800 dark:text-gray-200 pt-8 pb-2">
             <span className="text-purple-700 dark:text-purple-500">
               <VscDebug size={27} />
             </span>
             <span className="mr-2 ml-3">Bug Tracker</span>
+          </div>
+          <div className="flex justify-center items-center text-md font-semibold text-gray-800 dark:text-gray-200 pb-8 pt-2">
+            <span className="mr-2 ml-3">Track issues during development</span>
+          </div>
+
+          <div className="flex justify-between items-center mb-2">
+            <p className="text-md font-bold text-red-500 dark:text-red-600">*Important:</p>
+          </div><div className="flex justify-between items-center mb-8">
+            <p className="text-md font-semibold text-gray-700 dark:text-gray-200 max-w-sm">You must allow third-party cookies to use this website or you will not be able to log in. This issue will be fixed in future versions.</p>
           </div>
 
           <a className="btn-signIn cursor-pointer" href={process.env.REACT_APP_LOGIN_GUEST}>
@@ -57,19 +62,14 @@ const Login = () => {
             <span className="pl-2 text-md font-bold">Sign in with GitHub</span>
           </a>
 
-          <a className="btn-signIn cursor-pointer" href="/login">
+          <a className="btn-signIn disabled-item">
             <span className="text-blue-500 dark:text-blue-400">
               <FaTwitter size={20} />
             </span>
             <span className="pl-2 text-md font-bold">Sign in with Twitter</span>
           </a>
 
-          <p className="mt-4">
-            <a className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="/">
-              Work in progress
-            </a>
-          </p>
-          <p className="mt-1">
+          <p className="mt-8">
             <a className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="/">
               Work in progress
             </a>
