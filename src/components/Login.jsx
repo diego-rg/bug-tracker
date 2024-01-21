@@ -23,6 +23,11 @@ const Login = () => {
               {darkMode ? <CgSun size={27} /> : <CgMoon size={27} />}
             </button>
           </div>
+          <div className="flex justify-between items-center mb-2">
+            <p className="text-lg font-bold text-red-500 dark:text-red-600">*Important:</p>
+          </div><div className="flex justify-between items-center mb-8">
+            <p className="text-lg font-semibold text-gray-700 dark:text-gray-200 max-w-sm">You must allow third-party cookies to use this website or you will not be able to log in. This issue will be fixed in future versions.</p>
+          </div>
 
           <div className="flex justify-center items-center text-2xl font-bold text-gray-800 dark:text-gray-200 py-8">
             <span className="text-purple-700 dark:text-purple-500">
